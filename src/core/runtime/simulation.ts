@@ -184,6 +184,8 @@ export class Simulation {
       this._cycle = 0
       this._time = 0
       this.sys.resetElementState()
+      this.recorder = null // observations of the old field are no longer valid
+      this.lastObservation = {}
       this.epoch++
     }
     if (set.has('algorithm')) this.initAlgorithm()
