@@ -2,15 +2,8 @@
 // These pin the behaviour the generic engine must reproduce (see regression.test.ts).
 import { describe, expect, it } from 'vitest'
 import { Cavity } from './fixtures/legacy/cavity'
-import { DEFAULT_PARAMS, LCD_PIXELS, N } from './fixtures/legacy/params'
-
-export function legacyRing(): Float32Array {
-  const L = LCD_PIXELS
-  const amp = new Float32Array(L * L)
-  for (let y = 0; y < L; y++)
-    for (let x = 0; x < L; x++) amp[y * L + x] = Math.abs(Math.hypot(x - 32, y - 32) - 20) < 2.5 ? 1 : 0
-  return amp
-}
+import { DEFAULT_PARAMS, N } from './fixtures/legacy/params'
+import { legacyRing } from './helpers'
 
 const meanRow = (I: Float32Array, r: number) => {
   let s = 0

@@ -3,9 +3,10 @@ import { AssetStore } from '../src/core/physics/assets'
 import { NULL_CONTEXT, type ElementEnv } from '../src/core/physics/elements/element'
 import { buildElement } from '../src/core/physics/elements/models'
 import { buildPixelMap } from '../src/core/physics/elements/pixels'
-import type { OpticalElementSpec, TransmissiveLcdSpec } from '../src/core/physics/elements/types'
+import type { OpticalElementSpec } from '../src/core/physics/elements/types'
 import { cloneField, createField, fieldPower, type Field, type GridSpec } from '../src/core/physics/field/grid'
 import { KernelCache } from '../src/core/physics/propagation/angularSpectrum'
+import { lcd } from './helpers'
 
 const grid: GridSpec = { nx: 32, ny: 32, dx: 20e-6, dy: 20e-6 }
 const env = (): ElementEnv => ({ grid, wavelength: 650e-9, kernels: new KernelCache(), assets: new AssetStore() })
@@ -15,21 +16,6 @@ const uniform = (): Field => {
   f.re.fill(1)
   return f
 }
-
-export const lcd = (over: Partial<TransmissiveLcdSpec> = {}): TransmissiveLcdSpec => ({
-  kind: 'transmissive-lcd',
-  id: 'lcd',
-  pixels: { resolution: { x: 16, y: 16 }, pitch: { x: 40e-6, y: 40e-6 }, fillFactor: 1, offset: { x: 0, y: 0 } },
-  modulation: { kind: 'phase', phaseRange: 2 * Math.PI, levels: 0, response: { kind: 'linear' } },
-  clearTransmission: 1,
-  surfaces: { front: { transmission: 1, reflection: 0 }, back: { transmission: 1, reflection: 0 } },
-  polarizerTransmission: 1,
-  deadZoneTransmission: 0,
-  switchingTime: 0.01,
-  designWavelength: 650e-9,
-  program: { kind: 'zero' },
-  ...over,
-})
 
 describe('directional device behaviour', () => {
   it('an asymmetric LCD applies its front and back surface transmission independently', () => {
