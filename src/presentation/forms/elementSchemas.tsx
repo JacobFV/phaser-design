@@ -22,7 +22,7 @@ const mlaParams = () => ({
 })
 
 const lcdFields: FieldDescriptor[] = [
-  pixelsGroup([]),
+  pixelsGroup(['pixels']),
   {
     kind: 'union', path: ['modulation'], label: 'modulation', discriminant: 'kind',
     variants: {
@@ -158,7 +158,7 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
       phaseRange: TAU, phaseLevels: 256, phaseResponse: { kind: 'linear' }, switchingTime: 0.005, designWavelength: 633e-9, program: { kind: 'zero' },
     }),
     fields: [
-      pixelsGroup([]),
+      pixelsGroup(['pixels']),
       { kind: 'fraction', path: ['reflectivity'], label: 'pixel reflectivity' },
       { kind: 'fraction', path: ['deadZoneReflectivity'], label: 'inter-pixel reflectivity' },
       { kind: 'number', path: ['phaseRange'], label: 'phase stroke', unit: U.pi, min: 0 },
@@ -183,7 +183,7 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
   {
     kind: 'phase-plate', label: 'Static phase plate / DOE', description: 'Fixed pixelated phase mixer.',
     template: (id) => ({ kind: 'phase-plate', id, pixels: px(), transmission: { front: 0.97, back: 0.97 }, designWavelength: 650e-9, program: { kind: 'random', seed: 1, depth: 0.5 } }),
-    fields: [pixelsGroup([]), { kind: 'directional', path: ['transmission'], label: 'transmission' }, { kind: 'number', path: ['designWavelength'], label: 'design wavelength', unit: U.nm }, programField(['program'], 'phase profile')],
+    fields: [pixelsGroup(['pixels']), { kind: 'directional', path: ['transmission'], label: 'transmission' }, { kind: 'number', path: ['designWavelength'], label: 'design wavelength', unit: U.nm }, programField(['program'], 'phase profile')],
   },
   {
     kind: 'gain', label: 'Gain medium', description: 'Signal gain with optional saturation and additive noise.',
