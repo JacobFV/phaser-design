@@ -7,7 +7,7 @@ import { addScaled, cloneField, copyField, createField, fieldPower, meanIntensit
 import { KernelCache } from '../physics/propagation/angularSpectrum'
 import { CompiledSystem } from '../physics/system'
 import { diffConfig, expandScopes, type ConfigChange, type ResetScope, type SimulationConfig } from './config'
-import { RouteRecorder, type ObservationRequest } from './observation'
+import { RouteRecorder, type ObservationRequest, type Projection, type SideView } from './observation'
 import type { SimulationSnapshot } from './snapshots'
 
 export type InjectionMode = 'pulse' | 'continuous'
@@ -325,6 +325,16 @@ export class Simulation {
   snapshot(): SimulationSnapshot {
     const obs = this.lastObservation
     const rec = this.recorder
+    // The recorder outlives a snapshot (configure / observe re-snapshot the same round trip), and the worker transfers
+    // snapshot buffers to the UI. Copy so a second snapshot never hands out a buffer that was already detached.
+    const copyProjection = (p: Projection): Projection => ({ I: p.I.slice(), re: p.re.slice(), im: p.im.slice() })
+    const stepFields: Record<number, Float32Array> = {}
+    if (rec) for (const [k, v] of Object.entries(rec.stepFields)) stepFields[Number(k)] = v.slice()
+    const sideView: SideView | undefined = rec?.sideView && {
+      nx: rec.sideView.nx,
+      segments: rec.sideView.segments.map((s) => ({ stepIndex: s.stepIndex, rows: s.rows.map(copyProjection) })),
+      after: Object.fromEntries(Object.entries(rec.sideView.after).map(([k, p]) => [k, copyProjection(p)])),
+    }
     const taps: Record<string, Float32Array> = {}
     if (obs.taps) for (const [id, f] of this.tapBuffers) taps[id] = packField(f)
     const readouts = obs.readouts
@@ -368,11 +378,11 @@ export class Simulation {
         elementStates: this.sys.elementStates(),
         warnings: this.sys.warnings(),
         field: obs.captureField ? packField(this.field) : undefined,
-        stepFields: rec?.stepFields ?? {},
+        stepFields,
         taps,
         readouts,
-        sideView: rec?.sideView,
-        probe: rec?.probe,
+        sideView,
+        probe: rec?.probe?.slice(),
       },
       computation: { ports, regionPower, warnings: this.comp.warnings },
       algorithm: { module: this.cfg.algorithm.module, status, readout, error: this.algError },
