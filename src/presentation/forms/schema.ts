@@ -30,7 +30,7 @@ export const U = {
   um: { label: 'µm', scale: 1e6 },
   nm: { label: 'nm', scale: 1e9 },
   rad: { label: 'rad', scale: 1 },
-  pi: { label: 'π rad', scale: 1 / Math.PI },
+  pi: { label: '$\\pi$ rad', scale: 1 / Math.PI },
   ms: { label: 'ms', scale: 1e3 },
   kPa: { label: 'kPa', scale: 1e-3 },
   K: { label: 'K', scale: 1 },

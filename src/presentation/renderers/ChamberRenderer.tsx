@@ -3,6 +3,7 @@ import { evaluateProgram } from '../../core/physics/elements/pixels'
 import { isProgrammable, programOf } from '../../core/physics/elements/types'
 import type { SimulationConfig } from '../../core/runtime/config'
 import type { SimulationSnapshot } from '../../core/runtime/snapshots'
+import { rgbToBytes, rgbToCss, type RGB } from '../color/spectrum'
 import type { ChamberLayout, Lane, Plane } from '../layouts/chamberLayout'
 import { maxIntensity, paintCarrier, sideRows, type SideRow } from './sideView'
 
@@ -21,9 +22,11 @@ interface Props {
   onProbe: (p: ProbeTarget | null) => void
   selected: string | null
   onSelect: (elementId: string) => void
+  tint: RGB // display colour of the light
 }
 
 const SUPER = 2
+const mm = (m: number) => `${(m * 1e3).toFixed(m * 1e3 < 10 ? 1 : 0)} mm`
 const LAMBDA_VIS = 16 // displayed crest spacing, viewBox units (real crests would be invisible)
 const CREST_SPEED = 26
 
@@ -42,15 +45,15 @@ function centreRow(config: SimulationConfig, id: string): number[] | null {
   return Array.from({ length: cols }, (_, i) => all[row + Math.floor((i * px.resolution.x) / cols)])
 }
 
-export function ChamberRenderer({ layout: g, config, snapshot, previous, progress, probe, onProbe, selected, onSelect }: Props) {
+export function ChamberRenderer({ layout: g, config, snapshot, previous, progress, probe, onProbe, selected, onSelect, tint }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   const [hover, setHover] = useState<string | null>(null)
   const pd = Math.min(1, progress * 2)
   const pu = Math.max(0, progress * 2 - 1)
 
-  const live = useRef({ snapshot, previous, pd, pu, g, progress })
-  live.current = { snapshot, previous, pd, pu, g, progress }
+  const live = useRef({ snapshot, previous, pd, pu, g, progress, tint })
+  live.current = { snapshot, previous, pd, pu, g, progress, tint }
 
   // carrier animation runs on its own frame loop fed by refs, independent of the simulation clock
   useEffect(() => {
@@ -90,8 +93,9 @@ export function ChamberRenderer({ layout: g, config, snapshot, previous, progres
         const norm = Math.max(maxIntensity(sideRows(snap.physics.route, view, 'all')), 1e-300)
         const b = buffer(`${pass}${alpha}`, view.nx, rows.length)
         const pos = (r: SideRow) => g.yAt(lanePosition(r, pass))
-        if (animate) paintCarrier(b.img, rows, norm, pos, pass === 'forward' ? 1 : -1, now / 1000, LAMBDA_VIS, CREST_SPEED)
-        else paintCarrier(b.img, rows, norm, () => 0, 1, 0, 1e12, 0)
+        const bytes = rgbToBytes(L.tint)
+        if (animate) paintCarrier(b.img, rows, norm, pos, pass === 'forward' ? 1 : -1, now / 1000, LAMBDA_VIS, CREST_SPEED, bytes)
+        else paintCarrier(b.img, rows, norm, () => 0, 1, 0, 1e12, 0, bytes)
         b.canvas.getContext('2d')!.putImageData(b.img, 0, 0)
         ctx.globalAlpha = alpha
         const [lo, hi] = reveal
@@ -118,9 +122,9 @@ export function ChamberRenderer({ layout: g, config, snapshot, previous, progres
         const lane = L.progress < 0.5 ? g.down : g.up
         const y = g.topY + (L.progress < 0.5 ? L.pd : 1 - L.pu) * (g.bottomY - g.topY)
         const grad = ctx.createLinearGradient(0, y - 12, 0, y + 12)
-        grad.addColorStop(0, 'rgba(255,255,255,0)')
-        grad.addColorStop(0.5, 'rgba(255,255,255,0.9)')
-        grad.addColorStop(1, 'rgba(255,255,255,0)')
+        grad.addColorStop(0, rgbToCss(L.tint, 0))
+        grad.addColorStop(0.5, rgbToCss(L.tint, 0.9))
+        grad.addColorStop(1, rgbToCss(L.tint, 0))
         ctx.fillStyle = grad
         ctx.fillRect(lane.x, y - 12, lane.w, 24)
       }
@@ -192,8 +196,10 @@ export function ChamberRenderer({ layout: g, config, snapshot, previous, progres
         <rect {...g.laser} rx={4} className="part" />
         <text x={g.laser.x + g.laser.w / 2} y={g.laser.y + 21} className="t-title" textAnchor="middle">input</text>
         <text x={g.laser.x + g.laser.w / 2} y={g.laser.y + 37} className="t-small dim" textAnchor="middle">λ = {(config.physics.field.wavelength * 1e9).toFixed(0)} nm</text>
-        <line x1={g.down.cx} x2={g.down.cx} y1={g.laser.y + g.laser.h} y2={g.topY - 8} stroke="#fff" strokeWidth={6} opacity={0.25} filter="url(#glow)" />
-        <text x={g.down.x + g.down.w + 8} y={g.inputY + 4} className="t-mono dim">{inputPorts.map((p) => `${p.id}→${'physicalPort' in p ? p.physicalPort : ''}`).join('  ')}</text>
+        <line x1={g.down.cx} x2={g.down.cx} y1={g.laser.y + g.laser.h} y2={g.topY - 8} className="beam" strokeWidth={6} opacity={0.35} filter="url(#glow)" />
+        {inputPorts.length > 0 && (
+          <text x={g.down.x + g.down.w + 10} y={g.inputY + 4} className="t-mono faint">ports {inputPorts.map((p) => `${p.id}→${'physicalPort' in p ? p.physicalPort : ''}`).join(' · ')}</text>
+        )}
 
         {/* chamber */}
         <rect {...g.chamber} rx={6} className="chamber" />
@@ -202,6 +208,12 @@ export function ChamberRenderer({ layout: g, config, snapshot, previous, progres
         </text>
         <text x={g.down.x + 2} y={g.chamber.y + 17} className="t-small dim">↓ forward (front faces)</text>
         <text x={g.up.x + g.up.w - 2} y={g.chamber.y + 17} className="t-small dim" textAnchor="end">↑ return (back faces)</text>
+        {/* distance scale along the axis: start, every element plane, end */}
+        <g className="ruler">
+          <text x={g.down.x + 3} y={g.topY + 12} className="t-mono small halo">0</text>
+          {g.planes.map((p) => <text key={p.elementId} x={g.down.x + 3} y={p.y + 13} className="t-mono small halo">{mm(p.position)}</text>)}
+          <text x={g.down.x + 3} y={g.bottomY - 5} className="t-mono small halo">{mm(g.turnaround)}</text>
+        </g>
         {config.physics.field.boundary.kind === 'periodic' && (
           <text x={g.chamber.x + 6} y={g.chamber.y + g.chamber.h - 8} className="t-mono small">periodic boundary</text>
         )}
@@ -261,9 +273,14 @@ function Assembly({ items, y, g, above, selected }: { items: ChamberLayout['star
   return (
     <g>
       <line x1={g.down.x - 14} x2={g.up.x + g.up.w + 14} y1={y} y2={y} className="coupler" />
-      <text x={g.up.x + g.up.w + 14} y={above ? y - 7 : y + 16} className="t-mono dim" textAnchor="end">
-        {items.map((it) => (it.elementId === selected ? `[${it.label}]` : it.label)).join(' + ')}
-      </text>
+      {/* right-aligned beside the outer edge; long assemblies stack one item per line so the text never crosses the loop arc */}
+      {(() => {
+        const labels = items.map((it) => (it.elementId === selected ? `[${it.label}]` : it.label))
+        const lines = labels.join(' + ').length > 18 ? labels.map((l, i) => (i < labels.length - 1 ? `${l} +` : l)) : [labels.join(' + ')]
+        const x = g.up.x + g.up.w + 14
+        const y0 = above ? y - 9 - (lines.length - 1) * 11 : y + 44
+        return lines.map((l, i) => <text key={i} x={x} y={y0 + i * 11} className="t-mono dim" textAnchor="end">{l}</text>)
+      })()}
     </g>
   )
 }
@@ -303,5 +320,5 @@ function DetectorCells({ img, box }: { img: NonNullable<SimulationSnapshot['phys
   for (let j = 0; j < img.ny; j++) for (let i = 0; i < img.nx; i++) vals[Math.floor((i * bins) / img.nx)] += img.intensity[j * img.nx + i]
   const mx = Math.max(...vals) || 1
   const w = box.w / bins
-  return <g>{Array.from(vals, (v, i) => <rect key={i} x={box.x + i * w + 0.3} y={box.y + 4} width={w - 0.6} height={box.h - 8} fill="#fff" opacity={Math.sqrt(v / mx)} />)}</g>
+  return <g>{Array.from(vals, (v, i) => <rect key={i} x={box.x + i * w + 0.3} y={box.y + 4} width={w - 0.6} height={box.h - 8} className="light-fill" opacity={Math.sqrt(v / mx)} />)}</g>
 }

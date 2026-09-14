@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import type { RGB } from '../color/spectrum'
 
 export type ImageMode = 'intensity' | 'phase'
 
@@ -10,10 +11,12 @@ interface Props {
   intensity?: boolean
   mode: ImageMode
   size?: number
+  /** display colour of the light (spectral projection); omit for neutral (decoded numbers, not light) */
+  tint?: RGB
 }
 
-/** 2-D transverse wavefront. Intensity: white on black, gamma 0.5. Phase: hue = arg E, brightness = |E|. */
-export function FieldImage({ data, nx, ny, intensity, mode, size = 96 }: Props) {
+/** 2-D transverse wavefront. Intensity: light colour on black, gamma 0.5. Phase: hue = arg E, brightness = |E|. */
+export function FieldImage({ data, nx, ny, intensity, mode, size = 96, tint }: Props) {
   const ref = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
     const ctx = ref.current?.getContext('2d')
@@ -26,6 +29,7 @@ export function FieldImage({ data, nx, ny, intensity, mode, size = 96 }: Props) 
       I[i] = intensity ? data[i] : data[2 * i] ** 2 + data[2 * i + 1] ** 2
       if (I[i] > mx) mx = I[i]
     }
+    const [tr, tg, tb] = tint ? [tint[0] * 255, tint[1] * 255, tint[2] * 255] : [255, 255, 255]
     for (let i = 0; i < n; i++) {
       const v = mx > 0 ? Math.sqrt(I[i] / mx) : 0
       const p = i * 4
@@ -33,12 +37,12 @@ export function FieldImage({ data, nx, ny, intensity, mode, size = 96 }: Props) 
         const [r, g, b] = hue(Math.atan2(data[2 * i + 1], data[2 * i]))
         img.data[p] = r * v; img.data[p + 1] = g * v; img.data[p + 2] = b * v
       } else {
-        img.data[p] = img.data[p + 1] = img.data[p + 2] = 255 * v
+        img.data[p] = tr * v; img.data[p + 1] = tg * v; img.data[p + 2] = tb * v
       }
       img.data[p + 3] = 255
     }
     ctx.putImageData(img, 0, 0)
-  }, [data, nx, ny, intensity, mode])
+  }, [data, nx, ny, intensity, mode, tint])
   return <canvas ref={ref} className="field-image" width={nx} height={ny} style={{ width: size, height: (size * ny) / nx }} />
 }
 

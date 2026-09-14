@@ -29,7 +29,7 @@ const lcdFields: FieldDescriptor[] = [
       phase: {
         label: 'phase-mostly', template: () => ({ kind: 'phase', phaseRange: TAU, levels: 256, response: { kind: 'linear' } }),
         fields: [
-          { kind: 'number', path: ['phaseRange'], label: 'phase stroke', unit: U.pi, min: 0 },
+          { kind: 'number', path: ['phaseRange'], label: 'phase stroke $\\Delta\\varphi$', unit: U.pi, min: 0 },
           { kind: 'integer', path: ['levels'], label: 'levels (0 = analogue)', min: 0 },
           phaseResponseField(['response']),
         ],
@@ -67,7 +67,7 @@ const mlaFields: FieldDescriptor[] = [
   { kind: 'directional', path: ['transmission'], label: 'transmission' },
   { kind: 'vec2', path: ['offset'], label: 'offset from LCD pixels', unit: U.um },
   { kind: 'number', path: ['rotationRad'], label: 'rotation', unit: U.rad },
-  { kind: 'number', path: ['focalLengthSigma'], label: 'focal-length error (1σ, fraction)', min: 0 },
+  { kind: 'number', path: ['focalLengthSigma'], label: 'focal-length error ($1\\sigma$, fraction)', min: 0 },
   { kind: 'integer', path: ['seed'], label: 'fabrication seed' },
 ]
 
@@ -76,17 +76,17 @@ const intensityResponse = (path: string[], label: string, phase: boolean): Field
   variants: phase
     ? {
         none: { label: 'none', template: () => ({ kind: 'none' }), fields: [] },
-        kerr: { label: 'Kerr φ = c·I', template: () => ({ kind: 'kerr', coefficient: 1 }), fields: [{ kind: 'number', path: ['coefficient'], label: 'c (rad per unit intensity)' }] },
+        kerr: { label: 'Kerr φ = c·I', template: () => ({ kind: 'kerr', coefficient: 1 }), fields: [{ kind: 'number', path: ['coefficient'], label: '$c$ (rad per unit intensity)' }] },
         'saturable-kerr': {
           label: 'saturable Kerr', template: () => ({ kind: 'saturable-kerr', maxPhase: 1, saturationIntensity: 1 }),
-          fields: [{ kind: 'number', path: ['maxPhase'], label: 'φ_max', unit: U.rad }, { kind: 'number', path: ['saturationIntensity'], label: 'I_sat', min: 0 }],
+          fields: [{ kind: 'number', path: ['maxPhase'], label: '$\\varphi_{\\max}$', unit: U.rad }, { kind: 'number', path: ['saturationIntensity'], label: '$I_\\mathrm{sat}$', min: 0 }],
         },
       }
     : {
         none: { label: 'none', template: () => ({ kind: 'none' }), fields: [] },
         saturable: {
           label: 'saturable 1 + s/(1 + I/I_sat)', template: () => ({ kind: 'saturable', strength: -0.3, saturationIntensity: 1 }),
-          fields: [{ kind: 'number', path: ['strength'], label: 's (<0 absorbs)' }, { kind: 'number', path: ['saturationIntensity'], label: 'I_sat', min: 0 }],
+          fields: [{ kind: 'number', path: ['strength'], label: '$s$ ($< 0$ absorbs)' }, { kind: 'number', path: ['saturationIntensity'], label: '$I_\\mathrm{sat}$', min: 0 }],
         },
       },
 })
@@ -136,8 +136,8 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
     kind: 'lens', label: 'Thin lens', description: 'Quadratic phase with a circular clear aperture.',
     template: (id) => ({ kind: 'lens', id, focalLength: 0.05, apertureDiameter: 2e-3, transmission: { front: 0.99, back: 0.99 } }),
     fields: [
-      { kind: 'number', path: ['focalLength'], label: 'focal length', unit: U.mm },
-      { kind: 'number', path: ['apertureDiameter'], label: 'aperture', unit: U.mm, min: 0 },
+      { kind: 'number', path: ['focalLength'], label: 'focal length $f$', unit: U.mm },
+      { kind: 'number', path: ['apertureDiameter'], label: 'aperture $\\varnothing$', unit: U.mm, min: 0 },
       { kind: 'directional', path: ['transmission'], label: 'transmission' },
     ],
   },
@@ -161,7 +161,7 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
       pixelsGroup(['pixels']),
       { kind: 'fraction', path: ['reflectivity'], label: 'pixel reflectivity' },
       { kind: 'fraction', path: ['deadZoneReflectivity'], label: 'inter-pixel reflectivity' },
-      { kind: 'number', path: ['phaseRange'], label: 'phase stroke', unit: U.pi, min: 0 },
+      { kind: 'number', path: ['phaseRange'], label: 'phase stroke $\\Delta\\varphi$', unit: U.pi, min: 0 },
       { kind: 'integer', path: ['phaseLevels'], label: 'levels (0 = analogue)', min: 0 },
       phaseResponseField(['phaseResponse']),
       { kind: 'number', path: ['switchingTime'], label: 'switching time', unit: U.ms, min: 0 },
@@ -189,13 +189,13 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
     kind: 'gain', label: 'Gain medium', description: 'Signal gain with optional saturation and additive noise.',
     template: (id) => ({ kind: 'gain', id, smallSignalGain: 1.5, saturation: { kind: 'global', saturationIntensity: 0.5 }, noise: { kind: 'none' } }),
     fields: [
-      { kind: 'number', path: ['smallSignalGain'], label: 'small-signal power gain', min: 0 },
+      { kind: 'number', path: ['smallSignalGain'], label: 'small-signal power gain $G_0$', min: 0 },
       {
         kind: 'union', path: ['saturation'], label: 'saturation', discriminant: 'kind',
         variants: {
           none: { label: 'none', template: () => ({ kind: 'none' }), fields: [] },
-          global: { label: 'global (mean intensity)', template: () => ({ kind: 'global', saturationIntensity: 0.5 }), fields: [{ kind: 'number', path: ['saturationIntensity'], label: 'I_sat', min: 0 }] },
-          local: { label: 'local (per sample)', template: () => ({ kind: 'local', saturationIntensity: 0.5 }), fields: [{ kind: 'number', path: ['saturationIntensity'], label: 'I_sat', min: 0 }] },
+          global: { label: 'global (mean intensity)', template: () => ({ kind: 'global', saturationIntensity: 0.5 }), fields: [{ kind: 'number', path: ['saturationIntensity'], label: '$I_\\mathrm{sat}$', min: 0 }] },
+          local: { label: 'local (per sample)', template: () => ({ kind: 'local', saturationIntensity: 0.5 }), fields: [{ kind: 'number', path: ['saturationIntensity'], label: '$I_\\mathrm{sat}$', min: 0 }] },
         },
       },
       {
@@ -211,7 +211,7 @@ export const ELEMENT_KINDS: ElementKindInfo[] = [
     ],
   },
   {
-    kind: 'nonlinear', label: 'Nonlinear medium', description: "Local response E' = g(|E|²)·exp(iφ(|E|²))·E.",
+    kind: 'nonlinear', label: 'Nonlinear medium', description: "Local response $E' = g(|E|^2)\\,e^{i\\varphi(|E|^2)}\\,E$.",
     template: (id) => ({ kind: 'nonlinear', id, amplitude: { kind: 'none' }, phase: { kind: 'kerr', coefficient: 1 } }),
     fields: [intensityResponse(['amplitude'], 'amplitude response', false), intensityResponse(['phase'], 'phase response', true)],
   },

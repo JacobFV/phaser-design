@@ -28,7 +28,7 @@ export function analyticMetrics(sys: CompiledSystem): Metric[] {
 
   // ── timing ─────────────────────────────────────────────────────────────────────────────────
   add({ key: 'geometricLength', label: 'round-trip geometric length', value: t.geometricLength, unit: 'm', kind: 'analytical', group: 'timing' })
-  add({ key: 'roundTripTime', label: 'round-trip time Σ n_g L / c', value: t.roundTripTime, unit: 's', kind: 'analytical', group: 'timing' })
+  add({ key: 'roundTripTime', label: 'round-trip time $\\sum n_g L / c$', value: t.roundTripTime, unit: 's', kind: 'analytical', group: 'timing' })
   add({ key: 'roundTripFrequency', label: 'round trips per second', value: t.roundTripFrequency, unit: 'Hz', kind: 'analytical', group: 'timing' })
 
   // ── loss / gain ────────────────────────────────────────────────────────────────────────────
@@ -44,7 +44,7 @@ export function analyticMetrics(sys: CompiledSystem): Metric[] {
   add({ key: 'passiveRetention', label: 'passive power retention / round trip', value: passive, unit: '', kind: 'analytical', group: 'loss', note: 'uniform illumination; excludes diffraction out of apertures' })
   add({ key: 'smallSignalGain', label: 'small-signal gain / round trip', value: gain, unit: '', kind: 'analytical', group: 'loss' })
   add({ key: 'loopGain', label: 'small-signal loop gain', value: loop, unit: '', kind: 'analytical', group: 'loss' })
-  add({ key: 'logGrowthPerCycle', label: 'dominant growth (ln G_loop) / cycle', value: Math.log(loop), unit: '1/cycle', kind: 'analytical', group: 'loss', note: 'saturation, nonlinearity and diffraction loss can change this' })
+  add({ key: 'logGrowthPerCycle', label: 'dominant growth $\\ln G_\\mathrm{loop}$ / cycle', value: Math.log(loop), unit: '1/cycle', kind: 'analytical', group: 'loss', note: 'saturation, nonlinearity and diffraction loss can change this' })
   add({ key: 'retention1000', label: 'passive retention after 1000 cycles', value: Math.pow(passive, 1000), unit: '', kind: 'analytical', group: 'loss' })
 
   // ── diffraction ────────────────────────────────────────────────────────────────────────────
@@ -52,13 +52,13 @@ export function analyticMetrics(sys: CompiledSystem): Metric[] {
   const segs = steps.filter((x) => x.kind === 'propagate')
   const meanSeg = segs.length ? freePath / segs.length : 0
   const naGrid = Math.min(1, lambda / (2 * Math.max(grid.dx, grid.dy)))
-  add({ key: 'gridNA', label: 'max angle represented by the grid (sin θ)', value: naGrid, unit: '', kind: 'analytical', group: 'diffraction' })
+  add({ key: 'gridNA', label: 'max angle represented by the grid ($\\sin\\theta$)', value: naGrid, unit: '', kind: 'analytical', group: 'diffraction' })
 
   // Gaussian beam: w(L) = w0 √(1 + (L/z_R)²), z_R = π w0² / λ (paraxial, ignores focusing elements).
   const eps = 0.01
   const wStable = Math.sqrt((lambda * freePath) / (Math.PI * Math.sqrt((1 + eps) ** 2 - 1)))
   add({
-    key: 'minWaistOneTrip', label: 'waist growing ≤ 1 % per round trip (free space)', value: wStable, unit: 'm', kind: 'analytical', group: 'diffraction',
+    key: 'minWaistOneTrip', label: 'waist $w_0$ growing $\\le 1\\,\\%$ per round trip (free space)', value: wStable, unit: 'm', kind: 'analytical', group: 'diffraction',
     note: 'w0 = √(λL/(π√((1+ε)²−1))); ignores lenses, apertures and masks',
   })
 
@@ -73,9 +73,9 @@ export function analyticMetrics(sys: CompiledSystem): Metric[] {
     const theta = (1.22 * lambda) / pitch
     const rc = meanSeg * Math.tan(theta)
     efferents = (Math.PI * rc * rc) / (pitch * pitch)
-    add({ key: 'pixelDiffractionAngle', label: 'pixel diffraction half-angle 1.22 λ/D', value: theta, unit: 'rad', kind: 'analytical', group: 'diffraction' })
+    add({ key: 'pixelDiffractionAngle', label: 'pixel diffraction half-angle $1.22\\,\\lambda/D$', value: theta, unit: 'rad', kind: 'analytical', group: 'diffraction' })
     add({ key: 'couplingRadius', label: 'local coupling radius per segment', value: rc, unit: 'm', kind: 'analytical', group: 'diffraction', note: 'mean segment length × tan θ' })
-    add({ key: 'efferentsPerPixel', label: 'downstream pixels reached (π r² / D²)', value: efferents, unit: '', kind: 'analytical', group: 'diffraction' })
+    add({ key: 'efferentsPerPixel', label: 'downstream pixels reached ($\\pi r^2 / D^2$)', value: efferents, unit: '', kind: 'analytical', group: 'diffraction' })
   }
 
   // ── capacity: samples ≠ pixels ≠ modes ≠ states ────────────────────────────────────────────

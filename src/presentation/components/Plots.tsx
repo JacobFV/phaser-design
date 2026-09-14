@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import type { RGB } from '../color/spectrum'
 
 /** Log-scale trace over a fixed window so it scrolls instead of stretching. */
 export function Sparkline({ values, window = 200, width = 240, height = 40 }: { values: ArrayLike<number>; window?: number; width?: number; height?: number }) {
@@ -42,7 +43,7 @@ export function LinePlot({ series, width = 240, height = 70, threshold, yMin, yM
 }
 
 /** Rows over time (newest at the bottom), each row normalised to its own maximum. */
-export function Kymograph({ rows, bins, history = 160, height = 80 }: { rows: ArrayLike<number>[]; bins: number; history?: number; height?: number }) {
+export function Kymograph({ rows, bins, history = 160, height = 80, tint }: { rows: ArrayLike<number>[]; bins: number; history?: number; height?: number; tint?: RGB }) {
   const ref = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
     const ctx = ref.current?.getContext('2d')
@@ -50,16 +51,18 @@ export function Kymograph({ rows, bins, history = 160, height = 80 }: { rows: Ar
     const img = ctx.createImageData(bins, history)
     const recent = rows.slice(-history)
     const start = history - recent.length
+    const [tr, tg, tb] = tint ? [tint[0] * 255, tint[1] * 255, tint[2] * 255] : [255, 255, 255]
     recent.forEach((row, r) => {
       let mx = 0
       for (let i = 0; i < bins; i++) mx = Math.max(mx, row[i])
       for (let i = 0; i < bins; i++) {
         const p = ((start + r) * bins + i) * 4
-        img.data[p] = img.data[p + 1] = img.data[p + 2] = mx > 0 ? 255 * Math.sqrt(row[i] / mx) : 0
+        const v = mx > 0 ? Math.sqrt(row[i] / mx) : 0
+        img.data[p] = tr * v; img.data[p + 1] = tg * v; img.data[p + 2] = tb * v
         img.data[p + 3] = 255
       }
     })
     ctx.putImageData(img, 0, 0)
-  }, [rows, bins, history])
+  }, [rows, bins, history, tint])
   return <canvas ref={ref} className="kymo" width={bins} height={history} style={{ height }} />
 }

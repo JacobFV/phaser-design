@@ -48,10 +48,10 @@ export function Stage({ vbW, vbH, left, right, children, onNoteClick }: Props) {
   })
 
   const narrow = W < 900
-  const simW = narrow ? Math.min(W, 560) : Math.min(560, W - 220 - 250 - 2 * GAP)
+  const simW = narrow ? Math.min(W, 560) : Math.min(560, W - 210 - 270 - 2 * GAP)
   const spare = W - simW - 2 * GAP
-  const colL = narrow ? 0 : Math.min(300, spare * 0.46)
-  const colR = narrow ? 0 : Math.min(320, spare - colL)
+  const colL = narrow ? 0 : Math.min(280, spare * 0.44)
+  const colR = narrow ? 0 : Math.min(340, spare - colL)
   const ox = narrow ? 0 : (W - (colL + colR + simW + 2 * GAP)) / 2
   const s = simW / vbW
   const simH = vbH * s

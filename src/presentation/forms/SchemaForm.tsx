@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { FractionInput, NumberInput, Row, Select } from '../components/inputs'
+import { FractionInput, NumberInput, Row, Select, Unit } from '../components/inputs'
+import { Rich } from '../components/Tex'
 import { getAt, setAt, type FieldDescriptor, type Path } from './schema'
 
 interface Props<T> {
@@ -22,16 +23,17 @@ function FieldView({ f, value, set }: { f: FieldDescriptor; value: unknown; set:
       return (
         <Row label={f.label} hint={f.hint}>
           <NumberInput value={v * scale} min={f.min !== undefined ? f.min * scale : undefined} max={f.max !== undefined ? f.max * scale : undefined} onCommit={(x) => set(f.path, x / scale)} />
-          {f.unit?.label && <span className="unit">{f.unit.label}</span>}
+          <Unit label={f.unit?.label} />
         </Row>
       )
     }
     case 'fraction':
-      return <Row label={f.label} hint={f.hint}><FractionInput value={Number(getAt(value, f.path))} onCommit={(x) => set(f.path, x)} /></Row>
+      return <Row label={f.label} hint={f.hint}><FractionInput value={Number(getAt(value, f.path))} onCommit={(x) => set(f.path, x)} /><Unit /></Row>
     case 'integer':
       return (
         <Row label={f.label} hint={f.hint}>
           <NumberInput value={Number(getAt(value, f.path))} min={f.min} max={f.max} onCommit={(x) => set(f.path, Math.round(x))} />
+          <Unit />
         </Row>
       )
     case 'boolean':
@@ -54,9 +56,9 @@ function FieldView({ f, value, set }: { f: FieldDescriptor; value: unknown; set:
       const v = getAt(value, f.path) as { x: number; y: number }
       return (
         <Row label={f.label}>
-          <NumberInput value={v.x * f.unit.scale} width={64} onCommit={(x) => set([...f.path, 'x'], x / f.unit.scale)} />
-          <NumberInput value={v.y * f.unit.scale} width={64} onCommit={(y) => set([...f.path, 'y'], y / f.unit.scale)} />
-          <span className="unit">{f.unit.label}</span>
+          <NumberInput value={v.x * f.unit.scale} width={56} onCommit={(x) => set([...f.path, 'x'], x / f.unit.scale)} />
+          <NumberInput value={v.y * f.unit.scale} width={56} onCommit={(y) => set([...f.path, 'y'], y / f.unit.scale)} />
+          <Unit label={f.unit.label} />
         </Row>
       )
     }
@@ -84,7 +86,7 @@ function FieldView({ f, value, set }: { f: FieldDescriptor; value: unknown; set:
     case 'group':
       return <Group f={f} value={value} set={set} />
     case 'custom':
-      return <div className="custom-field"><div className="row-label">{f.label}</div>{f.render(value, set)}</div>
+      return <div className="custom-field"><div className="row-label"><Rich>{f.label}</Rich></div>{f.render(value, set)}</div>
   }
 }
 
@@ -92,7 +94,7 @@ function Group({ f, value, set }: { f: Extract<FieldDescriptor, { kind: 'group' 
   const [open, setOpen] = useState(!f.collapsed)
   return (
     <fieldset className="group">
-      <legend><button className="link" onClick={() => setOpen(!open)}>{open ? '▾' : '▸'} {f.label}</button></legend>
+      <legend><button className="link" onClick={() => setOpen(!open)}>{open ? '▾' : '▸'} <Rich>{f.label}</Rich></button></legend>
       {open && f.fields.map((sub, i) => <FieldView key={i} f={sub} value={value} set={set} />)}
     </fieldset>
   )

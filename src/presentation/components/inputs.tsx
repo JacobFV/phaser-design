@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
+import { Rich } from './Tex'
 
 const fmt = (v: number) => {
   if (!Number.isFinite(v)) return String(v)
@@ -29,13 +30,19 @@ export function NumberInput({ value, onCommit, min, max, step, width = 84 }: {
   )
 }
 
+/** Label + control. String labels may carry inline math between `$…$`. */
 export function Row({ label, hint, children }: { label: ReactNode; hint?: string; children: ReactNode }) {
   return (
     <label className="row" title={hint}>
-      <span className="row-label">{label}</span>
+      <span className="row-label"><Rich>{label}</Rich></span>
       <span className="row-control">{children}</span>
     </label>
   )
+}
+
+/** Trailing unit slot; always rendered so numeric inputs share one right-hand rail. */
+export function Unit({ label }: { label?: string }) {
+  return <span className="unit"><Rich>{label ?? ''}</Rich></span>
 }
 
 export function Select<T extends string>({ value, options, onChange }: { value: T; options: { value: T; label: string }[]; onChange: (v: T) => void }) {

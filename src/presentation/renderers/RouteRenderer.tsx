@@ -1,6 +1,7 @@
 import { useEffect, useRef, type MouseEvent } from 'react'
 import type { SimulationConfig } from '../../core/runtime/config'
 import type { SimulationSnapshot } from '../../core/runtime/snapshots'
+import { rgbToBytes, type RGB } from '../color/spectrum'
 import type { RouteLayout, RouteMark } from '../layouts/routeLayout'
 import type { ProbeTarget } from './ChamberRenderer'
 import { maxIntensity, paintCarrier, sideRows } from './sideView'
@@ -14,16 +15,17 @@ interface Props {
   onProbe: (p: ProbeTarget | null) => void
   selected: string | null
   onSelect: (elementId: string) => void
+  tint: RGB
 }
 
 const SUPER = 2
 
 /** Unfolded round trip for any topology. Simpler than the chamber artwork but driven by the same snapshots. */
-export function RouteRenderer({ layout: g, config, snapshot, progress, probe, onProbe, selected, onSelect }: Props) {
+export function RouteRenderer({ layout: g, config, snapshot, progress, probe, onProbe, selected, onSelect, tint }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
-  const live = useRef({ snapshot, g, progress })
-  live.current = { snapshot, g, progress }
+  const live = useRef({ snapshot, g, progress, tint })
+  live.current = { snapshot, g, progress, tint }
 
   useEffect(() => {
     let raf = 0
@@ -31,7 +33,7 @@ export function RouteRenderer({ layout: g, config, snapshot, progress, probe, on
     const draw = (now: number) => {
       raf = requestAnimationFrame(draw)
       const ctx = canvasRef.current?.getContext('2d')
-      const { snapshot: snap, g, progress } = live.current
+      const { snapshot: snap, g, progress, tint } = live.current
       if (!ctx) return
       ctx.setTransform(SUPER, 0, 0, SUPER, 0, 0)
       ctx.clearRect(0, 0, g.vbW, g.vbH)
@@ -47,7 +49,7 @@ export function RouteRenderer({ layout: g, config, snapshot, progress, probe, on
         canvas.height = rows.length
         buf = { canvas, img: canvas.getContext('2d')!.createImageData(view.nx, rows.length) }
       }
-      paintCarrier(buf.img, rows, Math.max(maxIntensity(rows), 1e-300), (r) => g.yAt(r.distance), 1, now / 1000, 16, 26)
+      paintCarrier(buf.img, rows, Math.max(maxIntensity(rows), 1e-300), (r) => g.yAt(r.distance), 1, now / 1000, 16, 26, rgbToBytes(tint))
       buf.canvas.getContext('2d')!.putImageData(buf.img, 0, 0)
       const revealY = g.y0 + progress * (g.y1 - g.y0)
       for (let r = 0; r < rows.length - 1; r++) {
@@ -139,7 +141,7 @@ function Mark({ m, g, selected }: { m: RouteMark; g: RouteLayout; selected: bool
     <g className={selected ? 'mark selected' : 'mark'}>
       {glyph()}
       <text x={g.lane.x + g.lane.w + 14} y={m.y + 4 + m.stack * 11} className="t-mono small">
-        {m.label} · {m.side === 'front' ? 'F' : 'B'}
+        {m.label} · {m.side === 'front' ? 'F' : 'B'} · {(m.distance * 1e3).toFixed(m.distance * 1e3 < 10 ? 1 : 0)} mm
       </text>
     </g>
   )

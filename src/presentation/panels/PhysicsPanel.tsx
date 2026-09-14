@@ -4,7 +4,7 @@ import type { DetectorSpec, PhysicsConfig } from '../../core/physics/system'
 import { rectangularRing } from '../../core/physics/topology/builders'
 import { compileRoute, type TopologySpec } from '../../core/physics/topology/topology'
 import type { SimulationSnapshot } from '../../core/runtime/snapshots'
-import { NumberInput, Row, Select } from '../components/inputs'
+import { NumberInput, Row, Select, Unit } from '../components/inputs'
 import { ELEMENT_KINDS, kindInfo } from '../forms/elementSchemas'
 import { SchemaForm } from '../forms/SchemaForm'
 import { U, type FieldDescriptor } from '../forms/schema'
@@ -25,7 +25,7 @@ const boundaryField: FieldDescriptor = {
   kind: 'union', path: ['boundary'], label: 'transverse boundary', discriminant: 'kind',
   variants: {
     absorbing: { label: 'absorbing edge', template: () => ({ kind: 'absorbing', widthFraction: 0.06 }), fields: [{ kind: 'number', path: ['widthFraction'], label: 'absorber width (fraction)', min: 0.01, max: 0.45 }] },
-    periodic: { label: 'periodic (explicit idealisation)', template: () => ({ kind: 'periodic' }), fields: [] },
+    periodic: { label: 'periodic (idealised)', template: () => ({ kind: 'periodic' }), fields: [] },
   },
 }
 
@@ -116,19 +116,19 @@ export function PhysicsPanel({ physics, snapshot, selected, onSelect, onChange, 
     <div className="panel physics">
       <section>
         <h3>field &amp; sampling</h3>
-        <Row label="grid (x × y)">
+        <Row label="grid ($n_x \times n_y$)">
           <Select value={String(grid.nx)} options={POW2} onChange={(v) => set({ field: { ...physics.field, grid: { ...grid, nx: Number(v) } } })} />
           <Select value={String(grid.ny)} options={POW2} onChange={(v) => set({ field: { ...physics.field, grid: { ...grid, ny: Number(v) } } })} />
         </Row>
-        <Row label="sample spacing">
+        <Row label="spacing $\Delta x, \Delta y$">
           <NumberInput value={grid.dx * 1e6} width={64} min={0.1} onCommit={(v) => set({ field: { ...physics.field, grid: { ...grid, dx: v * 1e-6 } } })} />
           <NumberInput value={grid.dy * 1e6} width={64} min={0.1} onCommit={(v) => set({ field: { ...physics.field, grid: { ...grid, dy: v * 1e-6 } } })} />
-          <span className="unit">µm</span>
+          <Unit label="µm" />
         </Row>
         <Row label="window"><span className="readonly">{(grid.nx * grid.dx * 1e3).toFixed(2)} × {(grid.ny * grid.dy * 1e3).toFixed(2)} mm</span></Row>
-        <Row label="wavelength">
+        <Row label="wavelength $\lambda$">
           <NumberInput value={physics.field.wavelength * 1e9} min={100} onCommit={(v) => set({ field: { ...physics.field, wavelength: v * 1e-9 } })} />
-          <span className="unit">nm</span>
+          <Unit label="nm" />
         </Row>
         <SchemaForm value={physics.field} fields={[boundaryField]} onChange={(field) => set({ field })} />
         <p className="hint">Changing the grid or wavelength resets the optical field; everything else keeps it.</p>
@@ -158,10 +158,10 @@ export function PhysicsPanel({ physics, snapshot, selected, onSelect, onChange, 
             )
           })}
         </div>
-        <Row label="add">
+        <div className="item-row add-row">
           <Select value={newKind} options={ELEMENT_KINDS.map((k) => ({ value: k.kind, label: k.label }))} onChange={setNewKind} />
           <button className="small" onClick={addElement}>+ add</button>
-        </Row>
+        </div>
       </section>
 
       {sel && (

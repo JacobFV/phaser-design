@@ -31,7 +31,7 @@ export const regionFields: FieldDescriptor[] = [
       },
       'blob-mode': {
         label: 'Gaussian blob mode', template: () => ({ kind: 'blob-mode', sigma: 50e-6 }),
-        fields: [{ kind: 'number', path: ['sigma'], label: 'mode σ (intensity rms)', unit: U.um, min: 0 }],
+        fields: [{ kind: 'number', path: ['sigma'], label: 'mode $\\sigma$ (intensity rms)', unit: U.um, min: 0 }],
       },
     },
   },

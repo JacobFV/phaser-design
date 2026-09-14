@@ -11,7 +11,7 @@ export const mediumField = (path: Path, label = 'medium'): FieldDescriptor => ({
       fields: [
         { kind: 'number', path: ['pressurePa'], label: 'pressure', unit: U.kPa, min: 0 },
         { kind: 'number', path: ['temperatureK'], label: 'temperature', unit: U.K, min: 1 },
-        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation α', unit: U.perM, min: 0 },
+        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation $\\alpha$', unit: U.perM, min: 0 },
       ],
     },
     gas: {
@@ -21,16 +21,16 @@ export const mediumField = (path: Path, label = 'medium'): FieldDescriptor => ({
         { kind: 'select', path: ['gas'], label: 'gas', options: GAS_IDS.map((g) => ({ value: g, label: g })) },
         { kind: 'number', path: ['pressurePa'], label: 'pressure', unit: U.kPa, min: 0 },
         { kind: 'number', path: ['temperatureK'], label: 'temperature', unit: U.K, min: 1 },
-        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation α', unit: U.perM, min: 0 },
+        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation $\\alpha$', unit: U.perM, min: 0 },
       ],
     },
     custom: {
       label: 'custom',
       template: () => ({ kind: 'custom', refractiveIndex: 1.5, groupIndex: 1.52, attenuationPerM: 0 }),
       fields: [
-        { kind: 'number', path: ['refractiveIndex'], label: 'phase index n', min: 0 },
-        { kind: 'number', path: ['groupIndex'], label: 'group index n_g', min: 0 },
-        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation α', unit: U.perM, min: 0 },
+        { kind: 'number', path: ['refractiveIndex'], label: 'phase index $n$', min: 0 },
+        { kind: 'number', path: ['groupIndex'], label: 'group index $n_g$', min: 0 },
+        { kind: 'number', path: ['attenuationPerM'], label: 'power attenuation $\\alpha$', unit: U.perM, min: 0 },
       ],
     },
   },
@@ -44,14 +44,14 @@ export const programField = (path: Path, label = 'program'): FieldDescriptor => 
       label: 'random phase', template: () => ({ kind: 'random', seed: 1, depth: 0.1 }),
       fields: [
         { kind: 'integer', path: ['seed'], label: 'seed' },
-        { kind: 'number', path: ['depth'], label: 'depth (× 2π)', min: 0, max: 1 },
+        { kind: 'number', path: ['depth'], label: 'depth ($\\times 2\\pi$)', min: 0, max: 1 },
       ],
     },
     grating: {
       label: 'blazed grating', template: () => ({ kind: 'grating', periodPx: 12, depth: 0.5, orientation: 'diagonal' }),
       fields: [
         { kind: 'integer', path: ['periodPx'], label: 'period (px)', min: 1 },
-        { kind: 'number', path: ['depth'], label: 'depth (× 2π)', min: 0, max: 1 },
+        { kind: 'number', path: ['depth'], label: 'depth ($\\times 2\\pi$)', min: 0, max: 1 },
         { kind: 'select', path: ['orientation'], label: 'orientation', options: ['x', 'y', 'diagonal', 'antidiagonal'].map((v) => ({ value: v, label: v })) },
       ],
     },
@@ -59,7 +59,7 @@ export const programField = (path: Path, label = 'program'): FieldDescriptor => 
       label: 'lenslet array', template: () => ({ kind: 'lenslets', groupPx: 16, depth: 0.3 }),
       fields: [
         { kind: 'integer', path: ['groupPx'], label: 'lenslet size (px)', min: 2 },
-        { kind: 'number', path: ['depth'], label: 'depth (× 2π)', min: 0, max: 1 },
+        { kind: 'number', path: ['depth'], label: 'depth ($\\times 2\\pi$)', min: 0, max: 1 },
       ],
     },
     array: {
@@ -79,7 +79,7 @@ export const phaseResponseField = (path: Path): FieldDescriptor => ({
   kind: 'union', path, label: 'phase response', discriminant: 'kind',
   variants: {
     linear: { label: 'linear', template: () => ({ kind: 'linear' }), fields: [] },
-    gamma: { label: 'gamma', template: () => ({ kind: 'gamma', gamma: 1.1 }), fields: [{ kind: 'number', path: ['gamma'], label: 'γ', min: 0.05 }] },
+    gamma: { label: 'gamma', template: () => ({ kind: 'gamma', gamma: 1.1 }), fields: [{ kind: 'number', path: ['gamma'], label: '$\\gamma$', min: 0.05 }] },
     lut: {
       label: 'lookup table', template: () => ({ kind: 'lut', table: [0, 0.3, 0.55, 0.8, 1] }),
       fields: [{

@@ -11,6 +11,8 @@
     "example": "vite-node examples/headless-experiment.ts"
   },
   "dependencies": {
+    "@types/katex": "^0.16.8",
+    "katex": "^0.18.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

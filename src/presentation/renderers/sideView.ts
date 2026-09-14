@@ -30,20 +30,26 @@ export function maxIntensity(rows: SideRow[]): number {
  * Paint rows into an N×rows ImageData with a travelling carrier: brightness ∝ |E|·(0.18 + 0.95·cos²(±kz − ωt + φ)).
  * `zOf` maps a row to its displayed position so crests move along the drawn beam.
  */
-export function paintCarrier(img: ImageData, rows: SideRow[], norm: number, zOf: (r: SideRow) => number, dir: 1 | -1, time: number, lambdaVis: number, speed: number) {
+export function paintCarrier(
+  img: ImageData, rows: SideRow[], norm: number, zOf: (r: SideRow) => number, dir: 1 | -1, time: number, lambdaVis: number, speed: number,
+  tint: [number, number, number] = [255, 255, 255],
+) {
   const k = (2 * Math.PI) / lambdaVis
   const wt = k * speed * time
   const nx = img.width
   const d = img.data
+  const [tr, tg, tb] = tint
   rows.forEach((row, r) => {
     const kz = dir * k * zOf(row) - wt
     const { I, re, im } = row.proj
     for (let x = 0; x < nx; x++) {
       const a = norm > 0 ? Math.sqrt(I[x] / norm) : 0
       const c = Math.cos(kz + Math.atan2(im[x], re[x]))
-      const v = Math.min(255, 255 * a * (0.18 + 0.95 * c * c))
+      const v = Math.min(1, a * (0.18 + 0.95 * c * c))
       const p = (r * nx + x) * 4
-      d[p] = d[p + 1] = d[p + 2] = v
+      d[p] = v * tr
+      d[p + 1] = v * tg
+      d[p + 2] = v * tb
       d[p + 3] = 255
     }
   })

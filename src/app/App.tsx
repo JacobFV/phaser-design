@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { monochromeRGB, rgbToCss } from '../presentation/color/spectrum'
+import { Tex } from '../presentation/components/Tex'
 import { createDefaultRegistry } from '../core/algorithms/registry'
 import { AssetStore } from '../core/physics/assets'
 import { compileRoute, type Route } from '../core/physics/topology/topology'
@@ -21,6 +23,7 @@ import { RouteRenderer } from '../presentation/renderers/RouteRenderer'
 import { chooseSliceSteps, leftNotes, rightNotes, type Anchors } from './notes'
 
 const SPEEDS = [0.25, 0.5, 1, 2, 5, 30, 300, 3000]
+const TARGET_BATCH_MS = 100 // wall time per fast-mode batch: keeps snapshots arriving ~10×/s
 
 function safeRoute(config: SimulationConfig): Route | null {
   try {
@@ -45,6 +48,8 @@ export default function App() {
 
   const { config, snapshot } = sim
   const route = useMemo(() => safeRoute(config), [config])
+  // the light's display colour: sRGB projection of the (monochromatic) spectral line
+  const tint = useMemo(() => monochromeRGB(config.physics.field.wavelength), [config.physics.field.wavelength])
   const chamber = route && isChamberRoute(route) ? chamberLayout(config, route) : null
   const generic = route && !chamber ? routeLayout(config, route) : null
   const layout = chamber ?? generic
@@ -58,12 +63,27 @@ export default function App() {
   }), [view.samplesPerSegment, sliceSteps, probe])
 
   // ── clock: wall-time pacing and the wavefront sweep are presentation; the worker owns simulation time ──
-  const clock = useRef({ pos: 1, oneShot: false, lastReq: 0 })
+  // msPerRt: measured worker cost of one round trip; lastCount: size of the batch awaiting its snapshot
+  const clock = useRef({ pos: 1, oneShot: false, lastReq: 0, lastCount: 0, msPerRt: 0 })
   const live = useRef({ playing, speed: view.speed, observe, busy: sim.busy, step: sim.step })
   live.current = { playing, speed: view.speed, observe, busy: sim.busy, step: sim.step }
+  const rateMark = useRef({ epoch: -1, cycle: 0, t: 0 })
+  const [rate, setRate] = useState(0)
 
   useEffect(() => {
     if (!snapshot) return
+    const C = clock.current
+    if (C.lastCount > 0) {
+      const est = snapshot.stepMs / C.lastCount
+      C.msPerRt = C.msPerRt ? 0.7 * C.msPerRt + 0.3 * est : est
+      C.lastCount = 0
+    }
+    const R = rateMark.current, now = performance.now()
+    if (R.epoch !== snapshot.epoch) Object.assign(R, { epoch: snapshot.epoch, cycle: snapshot.cycle, t: now })
+    else if (now - R.t > 500) {
+      setRate(((snapshot.cycle - R.cycle) * 1000) / (now - R.t))
+      Object.assign(R, { cycle: snapshot.cycle, t: now })
+    }
     if (live.current.speed <= 5 && (live.current.playing || clock.current.oneShot)) clock.current.pos = 0
     const img = snapshot.physics.readouts[0]
     if (img) {
@@ -85,8 +105,15 @@ export default function App() {
       if (L.playing) {
         if (L.speed > 5) {
           if (!L.busy) {
-            const count = Math.max(1, Math.min(5000, Math.round((L.speed * (now - (C.lastReq || now - 16))) / 1000)))
-            if (L.step(count, L.observe)) C.lastReq = now
+            // Ask for the round trips owed since the last request, but never more than the worker can finish in
+            // ~TARGET_BATCH_MS. Sizing by elapsed time alone feeds back: a slow batch makes the next one bigger.
+            const owed = (L.speed * (now - (C.lastReq || now - 16))) / 1000
+            const affordable = C.msPerRt > 0 ? TARGET_BATCH_MS / C.msPerRt : 1
+            const count = Math.max(1, Math.min(5000, Math.round(Math.min(owed, affordable))))
+            if (L.step(count, L.observe)) {
+              C.lastReq = now
+              C.lastCount = count
+            }
           }
           setProgress(1)
         } else {
@@ -129,44 +156,51 @@ export default function App() {
       : null
 
   const left = anchors ? leftNotes(config, snapshot, anchors, selected) : []
-  const right = anchors ? rightNotes(config, snapshot, anchors, sliceSteps, view.imageMode, probe, () => setProbe(null), detectorHistory) : []
+  const right = anchors ? rightNotes(config, snapshot, anchors, sliceSteps, view.imageMode, probe, () => setProbe(null), detectorHistory, tint) : []
   const timing = snapshot?.physics.timing
 
   return (
-    <div className="app">
-      <header>
-        <h1>PHASER</h1>
-        <p>
-          Compositional simulator for recurrent optical architectures. Physics (fields, elements, routes) → computation (regions, encodings, ports) → algorithms (workloads).
-          The three layers are configured separately, and presentation only renders snapshots.
-        </p>
-      </header>
-
-      <div className="transport">
-        <button className="primary" onClick={() => setPlaying((p) => !p)}>{playing ? '❚❚ pause' : '▶ run'}</button>
-        <button onClick={stepOnce} disabled={sim.busy}>step ↻</button>
+    <div className="app" style={{ '--light': rgbToCss(tint) } as CSSProperties}>
+      <div className="topbar">
+        <div className="brand">
+          <h1>PHASER</h1>
+          <span className="tagline">recurrent optical architecture simulator</span>
+        </div>
+        <span className="divider" />
+        <div className="tgroup">
+          <button className="primary" onClick={() => setPlaying((p) => !p)}>{playing ? '❚❚ Pause' : '▶ Run'}</button>
+          <button onClick={stepOnce} disabled={sim.busy}>Step</button>
+        </div>
         <label className="ctl">
-          <span className="ctl-label">round trips / s (wall)</span>
+          <span className="ctl-label">speed</span>
           <select value={view.speed} onChange={(e) => setView({ ...view, speed: Number(e.target.value) })}>
             {SPEEDS.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
+          <span className="ctl-label">round trips / s</span>
         </label>
-        <span className="counter">cycle <b>{snapshot?.cycle ?? 0}</b></span>
-        <span className="counter">t = <b>{formatValue(snapshot?.time ?? 0, 's')}</b></span>
-        {timing && <span className="counter">f_rt <b>{formatValue(timing.roundTripFrequency, 'Hz')}</b></span>}
-        {snapshot && <span className="counter">{snapshot.stepMs.toFixed(0)} ms / batch</span>}
-        <span className="counter name">{config.name ?? 'custom configuration'}</span>
+        <span className="divider" />
+        <div className="stats">
+          <span className="stat">cycle <b>{snapshot?.cycle ?? 0}</b></span>
+          <span className="stat"><Tex>t</Tex> <b>{formatValue(snapshot?.time ?? 0, 's')}</b></span>
+          {timing && <span className="stat"><Tex>{'f_{\\mathrm{rt}}'}</Tex> <b>{formatValue(timing.roundTripFrequency, 'Hz')}</b></span>}
+          <span className="stat"><Tex>\lambda</Tex> <b>{(config.physics.field.wavelength * 1e9).toFixed(0)} nm</b><span className="swatch" /></span>
+          {snapshot && <span className="stat perf">batch <b>{snapshot.stepMs.toFixed(0)} ms</b></span>}
+          {playing && view.speed > 5 && <span className="stat perf">actual <b>{rate.toFixed(0)} rt/s</b></span>}
+        </div>
+        <span className="config-name">{config.name ?? 'custom configuration'}</span>
       </div>
 
       {sim.errors.length > 0 && (
         <div className="errors">
-          {sim.errors.map((e, i) => <div key={i} className="error-text">{e} <button className="icon" onClick={() => sim.dismissError(i)}>×</button></div>)}
+          {sim.errors.map((e, i) => <div key={i} className="error-text"><span style={{ flex: 1 }}>{e}</span><button className="icon" onClick={() => sim.dismissError(i)}>×</button></div>)}
         </div>
       )}
 
       <div className="shell">
         <aside className="sidebar">
-          <Tabs value={configTab} onChange={setConfigTab} tabs={[{ id: 'physics', label: 'Physics' }, { id: 'computation', label: 'Computation' }, { id: 'algorithm', label: 'Algorithm' }]} />
+          <div className="tabs-bar">
+            <Tabs value={configTab} onChange={setConfigTab} tabs={[{ id: 'physics', label: 'Physics' }, { id: 'computation', label: 'Computation' }, { id: 'algorithm', label: 'Algorithm' }]} />
+          </div>
           {configTab === 'physics' && (
             <PhysicsPanel physics={config.physics} snapshot={snapshot} selected={selected} onSelect={setSelected}
               onChange={(physics) => sim.configure({ ...config, physics })} putAsset={putAsset} />
@@ -186,11 +220,11 @@ export default function App() {
             <Stage vbW={layout.vbW} vbH={layout.vbH} left={left} right={right}
               onNoteClick={(id) => { if (id.startsWith('el:')) { setSelected(id.slice(3)); setConfigTab('physics') } }}>
               {chamber && (
-                <ChamberRenderer layout={chamber} config={config} snapshot={snapshot} previous={sim.previous} progress={progress}
+                <ChamberRenderer layout={chamber} config={config} snapshot={snapshot} previous={sim.previous} progress={progress} tint={tint}
                   probe={probe} onProbe={setProbe} selected={selected} onSelect={(id) => { setSelected(id); setConfigTab('physics') }} />
               )}
               {generic && (
-                <RouteRenderer layout={generic} config={config} snapshot={snapshot} progress={progress}
+                <RouteRenderer layout={generic} config={config} snapshot={snapshot} progress={progress} tint={tint}
                   probe={probe} onProbe={setProbe} selected={selected} onSelect={(id) => { setSelected(id); setConfigTab('physics') }} />
               )}
             </Stage>
