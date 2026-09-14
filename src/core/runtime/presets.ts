@@ -50,10 +50,14 @@ function standardComputation(aperture: number, readout?: string): ComputationCon
 
 const runtime = { seed: 1, historyLength: 400 }
 
-// ── 1. legacy chamber ────────────────────────────────────────────────────────────────────────────
+// ── 1. PHASER chamber ────────────────────────────────────────────────────────────────────────────
 
-/** The original PHASER chamber: 4 transmissive LCDs between an input coupler and a readout coupler with a gain film. */
-export function legacyChamber(): SimulationConfig {
+/**
+ * The PHASER recurrent photon chamber from the original design: 4 transmissive LCDs between an input coupler and a
+ * readout coupler carrying a thin-film gain layer, read through M_out and a Fourier lens. The boundary is explicitly
+ * periodic, matching that design's idealised lossless side walls.
+ */
+export function phaserChamber(): SimulationConfig {
   const pitch = 63.5e-6
   const d = 10e-3
   const px = pixels(64, pitch)
@@ -62,7 +66,7 @@ export function legacyChamber(): SimulationConfig {
   }))
   return {
     version: 1,
-    name: 'Legacy PHASER chamber',
+    name: 'PHASER chamber',
     physics: {
       field: { grid: { nx: 128, ny: 128, dx: pitch / 2, dy: pitch / 2 }, wavelength: 650e-9, boundary: { kind: 'periodic' } },
       elements: [
@@ -243,7 +247,7 @@ export function idealResearchCavity(): SimulationConfig {
 }
 
 export const PRESETS: { id: string; name: string; build: () => SimulationConfig }[] = [
-  { id: 'legacy-chamber', name: 'Legacy PHASER chamber', build: legacyChamber },
+  { id: 'phaser-chamber', name: 'PHASER chamber', build: phaserChamber },
   { id: 'slm-ring', name: 'Reflective SLM ring', build: reflectiveSlmRing },
   { id: 'lcd-linear', name: 'Transmissive LCD linear cavity', build: transmissiveLcdLinear },
   { id: 'lcd-mla-stack', name: 'LCD + microlens stack', build: lcdMicrolensStack },

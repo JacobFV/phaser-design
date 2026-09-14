@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createDefaultRegistry } from '../src/core/algorithms/registry'
 import { AssetStore } from '../src/core/physics/assets'
 import { CompiledSystem } from '../src/core/physics/system'
-import { PRESETS, legacyChamber, reflectiveSlmRing } from '../src/core/runtime/presets'
+import { PRESETS, phaserChamber, reflectiveSlmRing } from '../src/core/runtime/presets'
 import { exportExperiment, importExperiment } from '../src/core/runtime/serialize'
 import { Simulation } from '../src/core/runtime/simulation'
 import { tinyConfig } from './helpers'
@@ -21,8 +21,8 @@ describe('presets', () => {
     })
   }
 
-  it('the legacy chamber times its route as twice the stack length, not N·d_sep', () => {
-    const t = new CompiledSystem(legacyChamber().physics, new AssetStore()).timing()
+  it('the PHASER chamber times its route as twice the stack length, not N·d_sep', () => {
+    const t = new CompiledSystem(phaserChamber().physics, new AssetStore()).timing()
     expect(t.geometricLength).toBeCloseTo(2 * 5 * 0.01, 12)
     expect(t.roundTripFrequency).toBeGreaterThan(2.9e9)
     expect(t.roundTripFrequency).toBeLessThan(3.0e9)
@@ -56,7 +56,7 @@ describe('serialisation', () => {
 
   it('identical configs give identical results', () => {
     const run = () => {
-      const s = new Simulation(JSON.parse(JSON.stringify(legacyChamber())), { algorithms: createDefaultRegistry() })
+      const s = new Simulation(JSON.parse(JSON.stringify(phaserChamber())), { algorithms: createDefaultRegistry() })
       s.step(3)
       return s.snapshot().physics.meanIntensity
     }
