@@ -1,4 +1,7 @@
-/** Deterministic PRNG (mulberry32): every stochastic program, noise source and test must be reproducible from a seed. */
+/**
+ * Deterministic randomness shared by every core layer (it depends on nothing). Every stochastic program, noise source,
+ * pattern and test must be reproducible from a seed.
+ */
 export function mulberry32(seed: number): () => number {
   let a = seed >>> 0
   return () => {

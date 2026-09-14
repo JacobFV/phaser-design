@@ -1,6 +1,6 @@
 import type { AssetResolver } from '../assets'
 import { sampleX, sampleY, type GridSpec } from '../field/grid'
-import { mulberry32 } from '../random'
+import { mulberry32 } from '../../common/random'
 import type { MaskProgram, PhaseResponse, PixelArray } from './types'
 
 /** Which device pixel each field sample falls in: −1 outside the active area, −2 inside the inter-pixel dead zone. */

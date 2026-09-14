@@ -88,7 +88,7 @@ describe('power vs amplitude', () => {
 })
 
 describe('pixel mapping and programs', () => {
-  it('reproduces the legacy nearest-neighbour upsampling (2 samples per pixel)', () => {
+  it('maps a 64-pixel panel onto a 128-sample grid by nearest neighbour (2 samples per pixel)', () => {
     const g: GridSpec = { nx: 128, ny: 128, dx: 31.75e-6, dy: 31.75e-6 }
     const map = buildPixelMap(g, { resolution: { x: 64, y: 64 }, pitch: { x: 63.5e-6, y: 63.5e-6 }, fillFactor: 1, offset: { x: 0, y: 0 } })
     for (const [i, j] of [[0, 0], [1, 1], [2, 5], [127, 64], [63, 127]])

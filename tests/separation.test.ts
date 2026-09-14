@@ -39,6 +39,11 @@ describe('layer separation', () => {
       for (const spec of imports(f.src)) expect(spec, f.path).not.toMatch(/algorithms|runtime/)
   })
 
+  it('common utilities depend on no semantic layer', () => {
+    for (const f of all.filter((f) => f.path.startsWith('common')))
+      for (const spec of imports(f.src)) expect(spec, f.path).not.toMatch(/physics|computation|algorithms|runtime/)
+  })
+
   it('algorithms reach physics only through the computation layer', () => {
     for (const f of all.filter((f) => f.path.startsWith('algorithms')))
       for (const spec of imports(f.src)) expect(spec, f.path).not.toMatch(/physics|runtime/)

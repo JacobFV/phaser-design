@@ -1,5 +1,5 @@
 import type { AlgorithmContext, AlgorithmModule } from '../interfaces'
-import { mulberry32 } from '../random'
+import { mulberry32 } from '../../common/random'
 
 interface State {
   patterns: number[][] // stored ±1 memories

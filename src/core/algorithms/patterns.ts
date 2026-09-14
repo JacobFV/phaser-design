@@ -1,4 +1,4 @@
-import { mulberry32 } from './random'
+import { mulberry32 } from '../common/random'
 
 /**
  * Pure, deterministic raster patterns (amplitude ∈ [0, 1], row-major). No browser canvas: the same config yields the

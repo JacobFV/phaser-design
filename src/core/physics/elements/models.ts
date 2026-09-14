@@ -1,7 +1,7 @@
 import { addScaled, meanIntensity, multiplyComplex, sampleX, sampleY, scaleField, type Field, type GridSpec } from '../field/grid'
 import { resolveMedium } from '../media/media'
 import { propagate, type PropagationKernel } from '../propagation/angularSpectrum'
-import { gaussian, mulberry32 } from '../random'
+import { gaussian, mulberry32 } from '../../common/random'
 import type { ElementEnv, OpticalElement, RunContext } from './element'
 import { achievedPhase, buildPixelMap, driveLevel, evaluateProgram } from './pixels'
 import type {
@@ -256,7 +256,7 @@ class MicrolensArray implements OpticalElement {
   readonly warnings: string[] = []
   private tr: Float64Array
   private ti: Float64Array
-  constructor(readonly spec: Omit<MicrolensArraySpec, 'kind' | 'label'> & { kind?: 'microlens-array' }, env: ElementEnv) {
+  constructor(readonly spec: MicrolensArraySpec, env: ElementEnv) {
     const { grid, wavelength } = env
     const k = (2 * Math.PI) / wavelength
     const n = grid.nx * grid.ny
@@ -310,7 +310,7 @@ class LcdMicrolens implements OpticalElement {
   private gap: PropagationKernel
   constructor(readonly spec: LcdMicrolensSpec, env: ElementEnv) {
     this.lcd = new TransmissiveLcd({ ...spec.lcd, kind: 'transmissive-lcd', id: `${spec.id}.lcd` }, env)
-    this.mla = new MicrolensArray({ ...spec.microlens, id: `${spec.id}.mla` }, env)
+    this.mla = new MicrolensArray({ ...spec.microlens, kind: 'microlens-array', id: `${spec.id}.mla` }, env)
     const medium = resolveMedium(spec.spacingMedium, env.wavelength)
     this.gap = env.kernels.get(env.grid, env.wavelength, spec.spacing, medium)
     this.gapGroupIndex = medium.ng

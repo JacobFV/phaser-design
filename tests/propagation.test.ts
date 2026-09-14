@@ -3,7 +3,7 @@ import { fft2 } from '../src/core/physics/field/fft'
 import { cloneField, createField, fieldPower, multiplyPhase, type GridSpec } from '../src/core/physics/field/grid'
 import { resolveMedium } from '../src/core/physics/media/media'
 import { KernelCache, buildKernel, propagate } from '../src/core/physics/propagation/angularSpectrum'
-import { mulberry32 } from '../src/core/physics/random'
+import { mulberry32 } from '../src/core/common/random'
 
 const grid: GridSpec = { nx: 32, ny: 32, dx: 10e-6, dy: 10e-6 }
 const lambda = 650e-9
