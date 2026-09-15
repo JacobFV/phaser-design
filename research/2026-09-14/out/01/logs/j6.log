@@ -1,0 +1,8 @@
+B_4f σ=16µm (0.50 samples, 0.25 px) → @10000: corr 0.0667 fid 0.0088 width× 15.763 leak 0.9187 logE/cycle -4.659e-1
+B_4f σ=32µm (1.01 samples, 0.50 px) → @10000: corr 0.3526 fid 0.1230 width× 4.992 leak 0.7567 logE/cycle -4.659e-1
+B_4f σ=64µm (2.02 samples, 1.01 px) → @10000: corr 0.7676 fid 0.5854 width× 1.263 leak 0.1292 logE/cycle -4.659e-1
+B_4f σ=128µm (4.03 samples, 2.02 px) → @10000: corr 0.5117 fid 0.2477 width× 0.330 leak 0.0000 logE/cycle -4.659e-1
+C_mla σ=32µm (1.01 samples, 0.50 px) → @10000: corr 0.0373 fid 0.0068 width× 22.122 leak 0.9923 logE/cycle -5.061e-1
+C_mla σ=64µm (2.02 samples, 1.01 px) → @10000: corr 0.0255 fid 0.0051 width× 11.061 leak 0.9917 logE/cycle -5.061e-1
+C_mla σ=96µm (3.02 samples, 1.51 px) → @10000: corr 0.0169 fid 0.0035 width× 7.374 leak 0.9709 logE/cycle -5.061e-1
+C_mla σ=128µm (4.03 samples, 2.02 px) → @10000: corr 0.0156 fid 0.0020 width× 5.530 leak 0.9492 logE/cycle -5.062e-1

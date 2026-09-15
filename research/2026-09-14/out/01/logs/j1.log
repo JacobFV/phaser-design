@@ -1,0 +1,2 @@
+img σ=3µm (0.30 samples, 0.15 px) → @100000: corr 0.0359 fid 0.0023 width× 23.715 leak 0.9653 logE/cycle -3.796e-1
+./01-launch.sh: line 4: 21292 Killed: 9               npx vite-node 01-dot.ts "$@"
