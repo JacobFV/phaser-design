@@ -1,0 +1,8 @@
+mem16_lowthr pattern0: acc(train window) 0.998 firstFail 140 extended-survival 151/10000 margin 0.98
+mem16_lowthr pattern1: acc(train window) 0.993 firstFail 61 extended-survival 151/10000 margin 0.84
+mem16_lowthr pattern2: acc(train window) 0.998 firstFail 144 extended-survival 158/10000 margin 0.97
+mem16_lowthr pattern3: acc(train window) 0.998 firstFail 60 extended-survival 151/10000 margin 0.93
+mem16_lowthr pattern4: acc(train window) 0.967 firstFail 60 extended-survival 151/10000 margin 0.41
+mem16_lowthr pattern5: acc(train window) 0.957 firstFail 80 extended-survival 151/10000 margin 0.38
+mem16_lowthr pattern6: acc(train window) 0.986 firstFail 88 extended-survival 151/10000 margin 0.52
+mem16_lowthr pattern7: acc(train window) 0.985 firstFail 60 extended-survival 152/10000 margin 0.88

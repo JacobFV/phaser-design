@@ -1,0 +1,26 @@
+wire_lin_d8_nodefocus: 2 cells, 2 cases, T=150, twin A64s
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 9.8193e-03 task 9.819e-03 bg 0.000e+00 acc 0.750 G0 2.000 [9s]
+it 10 loss 1.6735e-03 task 1.674e-03 bg 0.000e+00 acc 0.933 G0 2.000 [83s]
+it 20 loss 4.2613e-04 task 4.261e-04 bg 0.000e+00 acc 0.979 G0 2.000 [153s]
+it 30 loss 1.4600e-04 task 1.460e-04 bg 0.000e+00 acc 0.992 G0 2.000 [219s]
+it 40 loss 6.3904e-05 task 6.390e-05 bg 0.000e+00 acc 0.996 G0 2.000 [269s]
+it 50 loss 3.3395e-05 task 3.340e-05 bg 0.000e+00 acc 1.000 G0 2.000 [321s]
+it 60 loss 1.9721e-05 task 1.972e-05 bg 0.000e+00 acc 1.000 G0 2.000 [377s]
+it 70 loss 1.2659e-05 task 1.266e-05 bg 0.000e+00 acc 1.000 G0 2.000 [433s]
+it 80 loss 8.9026e-06 task 8.903e-06 bg 0.000e+00 acc 1.000 G0 2.000 [487s]
+it 90 loss 6.6674e-06 task 6.667e-06 bg 0.000e+00 acc 1.000 G0 2.000 [543s]
+it 100 loss 5.1762e-06 task 5.176e-06 bg 0.000e+00 acc 1.000 G0 2.000 [598s]
+it 110 loss 4.1162e-06 task 4.116e-06 bg 0.000e+00 acc 1.000 G0 2.000 [653s]
+it 120 loss 3.3433e-06 task 3.343e-06 bg 0.000e+00 acc 1.000 G0 2.000 [706s]
+it 130 loss 2.7646e-06 task 2.765e-06 bg 0.000e+00 acc 1.000 G0 2.000 [759s]
+it 140 loss 2.3118e-06 task 2.312e-06 bg 0.000e+00 acc 1.000 G0 2.000 [810s]
+it 150 loss 1.9449e-06 task 1.945e-06 bg 0.000e+00 acc 1.000 G0 2.000 [864s]
+it 160 loss 1.6437e-06 task 1.644e-06 bg 0.000e+00 acc 1.000 G0 2.000 [915s]
+it 170 loss 1.3951e-06 task 1.395e-06 bg 0.000e+00 acc 1.000 G0 2.000 [966s]
+it 180 loss 1.1901e-06 task 1.190e-06 bg 0.000e+00 acc 1.000 G0 2.000 [1013s]
+it 190 loss 1.0214e-06 task 1.021e-06 bg 0.000e+00 acc 1.000 G0 2.000 [1060s]
+it 199 loss 8.9507e-07 task 8.951e-07 bg 0.000e+00 acc 1.000 G0 2.000 [1103s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/wire_lin_d8_nodefocus

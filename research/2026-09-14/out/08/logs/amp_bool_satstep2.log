@@ -1,0 +1,5 @@
+amp_bool_satstep2: 7 cells, 16 cases, T=240, twin A64s_amp
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.8000e-01 task 1.800e-01 bg 0.000e+00 acc 0.500 G0 3.000 [12s]

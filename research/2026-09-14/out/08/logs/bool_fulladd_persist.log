@@ -1,0 +1,14 @@
+bool_fulladd_persist: 6 cells, 8 cases, T=200, twin A64s
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:183: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 2.8225e-01 task 1.250e-01 bg 2.344e-01 acc 0.500 G0 2.194 [15s]
+it 10 loss 1.9456e-01 task 1.249e-01 bg 1.942e-01 acc 0.500 G0 2.140 [167s]
+it 20 loss 1.3376e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.097 [315s]
+it 30 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.079 [467s]
+it 40 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.072 [616s]
+it 50 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.070 [754s]
+it 60 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.069 [893s]
+it 70 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.068 [1033s]
+it 80 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.068 [1208s]
+it 90 loss 1.2500e-01 task 1.250e-01 bg 0.000e+00 acc 0.500 G0 2.068 [1439s]

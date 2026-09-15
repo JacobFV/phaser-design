@@ -1,0 +1,2 @@
+wire_lin_d16_sd5 src0_0: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 115000000000.00
+wire_lin_d16_sd5 src1_0: acc(train window) 0.973 firstFail 40 extended-survival 175/10000 margin 0.72

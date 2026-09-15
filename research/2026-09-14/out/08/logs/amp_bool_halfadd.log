@@ -1,0 +1,31 @@
+amp_bool_halfadd: 5 cells, 4 cases, T=240, twin A64s_amp
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [4s]
+it 10 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [39s]
+it 20 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [74s]
+it 30 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [110s]
+it 40 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [145s]
+it 50 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [181s]
+it 60 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [217s]
+it 70 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [252s]
+it 80 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [288s]
+it 90 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [324s]
+it 100 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [360s]
+it 110 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [397s]
+it 120 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [433s]
+it 130 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [470s]
+it 140 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [507s]
+it 150 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [544s]
+it 160 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [582s]
+it 170 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [619s]
+it 180 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [656s]
+it 190 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [694s]
+it 200 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [731s]
+it 210 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [768s]
+it 220 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [805s]
+it 230 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [842s]
+it 240 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [879s]
+it 249 loss 1.3500e-01 task 1.350e-01 bg 0.000e+00 acc 0.625 G0 3.000 [912s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/amp_bool_halfadd

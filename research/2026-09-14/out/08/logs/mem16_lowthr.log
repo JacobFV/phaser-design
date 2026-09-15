@@ -1,0 +1,31 @@
+mem16_lowthr: 16 cells, 8 cases, T=150, twin A64s
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:170: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.7294e+00 task 1.558e+00 bg 3.432e+00 acc 0.611 G0 2.393 [10s]
+it 10 loss 1.0822e+00 task 7.856e-01 bg 5.931e+00 acc 0.560 G0 2.326 [145s]
+it 20 loss 4.1594e-01 task 2.948e-01 bg 2.422e+00 acc 0.578 G0 2.274 [242s]
+it 30 loss 1.8600e-01 task 1.329e-01 bg 1.062e+00 acc 0.633 G0 2.238 [350s]
+it 40 loss 8.6572e-02 task 6.406e-02 bg 4.502e-01 acc 0.700 G0 2.214 [454s]
+it 50 loss 5.5080e-02 task 4.504e-02 bg 2.009e-01 acc 0.750 G0 2.200 [554s]
+it 60 loss 3.5475e-02 task 2.949e-02 bg 1.196e-01 acc 0.801 G0 2.191 [655s]
+it 70 loss 2.5650e-02 task 2.205e-02 bg 7.206e-02 acc 0.841 G0 2.186 [781s]
+it 80 loss 1.9597e-02 task 1.709e-02 bg 5.006e-02 acc 0.875 G0 2.182 [905s]
+it 90 loss 1.4451e-02 task 1.308e-02 bg 2.749e-02 acc 0.911 G0 2.179 [1022s]
+it 100 loss 1.1583e-02 task 1.061e-02 bg 1.955e-02 acc 0.926 G0 2.176 [1138s]
+it 110 loss 9.3512e-03 task 8.574e-03 bg 1.555e-02 acc 0.945 G0 2.174 [1241s]
+it 120 loss 7.8591e-03 task 7.324e-03 bg 1.070e-02 acc 0.958 G0 2.173 [1331s]
+it 130 loss 6.8476e-03 task 6.347e-03 bg 1.002e-02 acc 0.966 G0 2.172 [1455s]
+it 140 loss 6.0316e-03 task 5.681e-03 bg 7.017e-03 acc 0.972 G0 2.171 [1571s]
+it 150 loss 5.1818e-03 task 4.892e-03 bg 5.795e-03 acc 0.974 G0 2.170 [1705s]
+it 160 loss 4.2651e-03 task 4.031e-03 bg 4.689e-03 acc 0.983 G0 2.169 [27860s]
+it 170 loss 3.5880e-03 task 3.420e-03 bg 3.352e-03 acc 0.987 G0 2.168 [28045s]
+it 180 loss 3.1917e-03 task 3.013e-03 bg 3.571e-03 acc 0.989 G0 2.167 [28172s]
+it 190 loss 2.7608e-03 task 2.608e-03 bg 3.054e-03 acc 0.994 G0 2.166 [28259s]
+it 200 loss 2.4291e-03 task 2.282e-03 bg 2.951e-03 acc 0.996 G0 2.166 [28335s]
+it 210 loss 2.2442e-03 task 2.124e-03 bg 2.402e-03 acc 0.995 G0 2.165 [28427s]
+it 220 loss 2.0281e-03 task 1.925e-03 bg 2.059e-03 acc 0.996 G0 2.165 [28532s]
+it 230 loss 1.8894e-03 task 1.792e-03 bg 1.951e-03 acc 0.997 G0 2.164 [28645s]
+it 240 loss 1.7767e-03 task 1.668e-03 bg 2.173e-03 acc 0.997 G0 2.163 [28744s]
+it 249 loss 1.5769e-03 task 1.495e-03 bg 1.634e-03 acc 0.999 G0 2.163 [28830s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/mem16_lowthr

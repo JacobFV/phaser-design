@@ -1,0 +1,8 @@
+amp_latch hold0: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 4.27
+amp_latch hold1: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 1.08
+amp_latch set_from0: acc(train window) 0.220 firstFail 85 extended-survival 10000/10000 margin 0.31
+amp_latch set_from1: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 1.01
+amp_latch reset_from1: acc(train window) 0.979 firstFail 87 extended-survival 10000/10000 margin 1.00
+amp_latch reset_from0: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 4.27
+amp_latch set_then_reset: acc(train window) 0.374 firstFail 85 extended-survival 241/10000 margin 0.38
+amp_latch reset_then_set: acc(train window) 0.969 firstFail 87 extended-survival 675/10000 margin 1.00

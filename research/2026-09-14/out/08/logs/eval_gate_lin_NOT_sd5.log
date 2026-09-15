@@ -1,0 +1,2 @@
+gate_lin_NOT_sd5 NOT0: acc(train window) 1.000 firstFail null extended-survival 750/10000 margin 1.64
+gate_lin_NOT_sd5 NOT1: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 6.62

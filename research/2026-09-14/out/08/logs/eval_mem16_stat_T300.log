@@ -1,0 +1,8 @@
+mem16_stat_T300 pattern0: acc(train window) 0.684 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern1: acc(train window) 0.762 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern2: acc(train window) 0.873 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern3: acc(train window) 0.573 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern4: acc(train window) 0.734 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern5: acc(train window) 0.597 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern6: acc(train window) 0.626 firstFail 100 extended-survival 301/10000 margin 0.00
+mem16_stat_T300 pattern7: acc(train window) 0.691 firstFail 100 extended-survival 301/10000 margin 0.00

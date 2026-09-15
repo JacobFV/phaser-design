@@ -1,0 +1,26 @@
+amp_mem16_p5: 16 cells, 8 cases, T=300, twin A64s_amp
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.9912e-01 task 2.967e-02 bg 0.000e+00 acc 0.917 G0 3.010 [10s]
+it 10 loss 4.8014e-02 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 3.051 [109s]
+it 20 loss 2.9675e-02 task 1.530e-02 bg 0.000e+00 acc 0.989 G0 3.081 [208s]
+it 30 loss 5.9340e-02 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 3.108 [307s]
+it 40 loss 1.2272e-01 task 1.364e-02 bg 0.000e+00 acc 0.961 G0 3.122 [408s]
+it 50 loss 8.0238e-02 task 3.854e-02 bg 0.000e+00 acc 0.891 G0 3.124 [507s]
+it 60 loss 1.5295e-01 task 1.237e-01 bg 0.000e+00 acc 0.878 G0 3.116 [606s]
+it 70 loss 9.2743e-02 task 3.996e-02 bg 0.000e+00 acc 0.887 G0 3.099 [705s]
+it 80 loss 1.2197e-01 task 5.533e-02 bg 0.000e+00 acc 0.844 G0 3.079 [804s]
+it 90 loss 1.3391e-01 task 5.530e-02 bg 0.000e+00 acc 0.844 G0 3.101 [903s]
+it 100 loss 8.0142e-02 task 5.525e-02 bg 0.000e+00 acc 0.844 G0 3.117 [1002s]
+it 110 loss 1.3955e-01 task 1.340e-01 bg 0.000e+00 acc 0.830 G0 3.110 [1101s]
+it 120 loss 9.5732e-02 task 6.940e-02 bg 0.000e+00 acc 0.805 G0 3.042 [1200s]
+it 130 loss 7.8476e-02 task 6.921e-02 bg 0.000e+00 acc 0.805 G0 3.017 [1286s]
+it 140 loss 8.5806e-02 task 8.279e-02 bg 0.000e+00 acc 0.766 G0 3.013 [1370s]
+it 150 loss 8.0054e-02 task 6.574e-02 bg 0.000e+00 acc 0.815 G0 3.017 [1453s]
+it 160 loss 6.1067e-02 task 5.551e-02 bg 0.000e+00 acc 0.844 G0 3.023 [1534s]
+it 170 loss 5.6981e-02 task 5.553e-02 bg 0.000e+00 acc 0.844 G0 3.025 [1615s]
+it 180 loss 5.5702e-02 task 5.547e-02 bg 0.000e+00 acc 0.844 G0 3.027 [1696s]
+it 190 loss 5.5595e-02 task 5.546e-02 bg 0.000e+00 acc 0.844 G0 3.028 [1778s]
+it 199 loss 5.5502e-02 task 5.541e-02 bg 0.000e+00 acc 0.844 G0 3.028 [1851s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/amp_mem16_p5

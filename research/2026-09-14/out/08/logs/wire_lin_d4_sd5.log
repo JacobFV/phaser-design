@@ -1,0 +1,26 @@
+wire_lin_d4_sd5: 2 cells, 2 cases, T=150, twin A64sd5
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:183: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.8814e-02 task 1.881e-02 bg 0.000e+00 acc 0.500 G0 2.000 [4s]
+it 10 loss 4.0586e-03 task 4.059e-03 bg 0.000e+00 acc 0.819 G0 2.000 [51s]
+it 20 loss 3.4972e-03 task 3.497e-03 bg 0.000e+00 acc 0.849 G0 2.000 [99s]
+it 30 loss 2.8882e-03 task 2.888e-03 bg 0.000e+00 acc 0.882 G0 2.000 [144s]
+it 40 loss 7.6446e-04 task 7.645e-04 bg 0.000e+00 acc 0.975 G0 2.000 [187s]
+it 50 loss 3.6881e-04 task 3.688e-04 bg 0.000e+00 acc 1.000 G0 2.000 [231s]
+it 60 loss 2.3381e-04 task 2.338e-04 bg 0.000e+00 acc 1.000 G0 2.000 [280s]
+it 70 loss 1.5039e-04 task 1.504e-04 bg 0.000e+00 acc 1.000 G0 2.000 [329s]
+it 80 loss 1.2435e-04 task 1.244e-04 bg 0.000e+00 acc 1.000 G0 2.000 [369s]
+it 90 loss 1.2003e-04 task 1.200e-04 bg 0.000e+00 acc 1.000 G0 2.000 [409s]
+it 100 loss 1.1953e-04 task 1.195e-04 bg 0.000e+00 acc 1.000 G0 2.000 [447s]
+it 110 loss 1.2339e-04 task 1.234e-04 bg 0.000e+00 acc 1.000 G0 2.000 [486s]
+it 120 loss 2.0316e-04 task 2.032e-04 bg 0.000e+00 acc 1.000 G0 2.000 [528s]
+it 130 loss 1.0965e-04 task 1.097e-04 bg 0.000e+00 acc 1.000 G0 2.000 [573s]
+it 140 loss 1.2169e-04 task 1.217e-04 bg 0.000e+00 acc 1.000 G0 2.000 [618s]
+it 150 loss 1.3356e-04 task 1.336e-04 bg 0.000e+00 acc 1.000 G0 2.000 [659s]
+it 160 loss 3.1820e-04 task 3.182e-04 bg 0.000e+00 acc 1.000 G0 2.000 [699s]
+it 170 loss 1.8782e-04 task 1.878e-04 bg 0.000e+00 acc 1.000 G0 2.000 [739s]
+it 180 loss 1.0248e-04 task 1.025e-04 bg 0.000e+00 acc 1.000 G0 2.000 [777s]
+it 190 loss 1.1503e-04 task 1.150e-04 bg 0.000e+00 acc 1.000 G0 2.000 [815s]
+it 199 loss 1.2276e-04 task 1.228e-04 bg 0.000e+00 acc 1.000 G0 2.000 [849s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/wire_lin_d4_sd5

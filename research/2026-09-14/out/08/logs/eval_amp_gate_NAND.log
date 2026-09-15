@@ -1,0 +1,4 @@
+amp_gate_NAND NAND00: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 2.00
+amp_gate_NAND NAND01: acc(train window) 1.000 firstFail null extended-survival 243/10000 margin 1.10
+amp_gate_NAND NAND10: acc(train window) 0.667 firstFail 80 extended-survival 201/10000 margin 0.00
+amp_gate_NAND NAND11: acc(train window) 0.333 firstFail 80 extended-survival 201/10000 margin 0.40

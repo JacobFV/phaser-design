@@ -1,0 +1,31 @@
+amp_gate_NOT: 3 cells, 2 cases, T=200, twin A64s_amp
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 2.7943e-01 task 8.988e-02 bg 0.000e+00 acc 0.750 G0 3.010 [2s]
+it 10 loss 1.2180e-01 task 8.984e-02 bg 0.000e+00 acc 0.750 G0 3.057 [20s]
+it 20 loss 9.9763e-02 task 8.969e-02 bg 0.000e+00 acc 0.750 G0 3.041 [38s]
+it 30 loss 9.2390e-02 task 8.960e-02 bg 0.000e+00 acc 0.750 G0 3.007 [56s]
+it 40 loss 9.0181e-02 task 8.956e-02 bg 0.000e+00 acc 0.750 G0 3.006 [73s]
+it 50 loss 8.9507e-02 task 8.937e-02 bg 0.000e+00 acc 0.750 G0 3.035 [91s]
+it 60 loss 8.9060e-02 task 8.904e-02 bg 0.000e+00 acc 0.750 G0 3.104 [109s]
+it 70 loss 8.8072e-02 task 8.804e-02 bg 0.000e+00 acc 0.750 G0 3.234 [127s]
+it 80 loss 1.2847e-01 task 8.694e-02 bg 0.000e+00 acc 0.750 G0 3.265 [145s]
+it 90 loss 1.0173e-01 task 8.887e-02 bg 0.000e+00 acc 0.750 G0 3.281 [163s]
+it 100 loss 8.6351e-02 task 8.503e-02 bg 0.000e+00 acc 0.750 G0 3.290 [181s]
+it 110 loss 6.9062e-02 task 6.709e-02 bg 0.000e+00 acc 0.750 G0 3.309 [199s]
+it 120 loss 8.7915e-02 task 8.618e-02 bg 0.000e+00 acc 0.750 G0 3.353 [217s]
+it 130 loss 8.9099e-02 task 8.818e-02 bg 0.000e+00 acc 0.750 G0 3.377 [235s]
+it 140 loss 8.8789e-02 task 8.826e-02 bg 0.000e+00 acc 0.750 G0 3.389 [253s]
+it 150 loss 8.8042e-02 task 8.797e-02 bg 0.000e+00 acc 0.750 G0 3.398 [271s]
+it 160 loss 8.7037e-02 task 8.699e-02 bg 0.000e+00 acc 0.750 G0 3.406 [289s]
+it 170 loss 8.3513e-02 task 8.324e-02 bg 0.000e+00 acc 0.750 G0 3.422 [307s]
+it 180 loss 1.0167e-01 task 8.862e-02 bg 0.000e+00 acc 0.750 G0 3.429 [325s]
+it 190 loss 9.3816e-02 task 8.956e-02 bg 0.000e+00 acc 0.750 G0 3.420 [343s]
+it 200 loss 9.1040e-02 task 8.970e-02 bg 0.000e+00 acc 0.750 G0 3.418 [361s]
+it 210 loss 9.0028e-02 task 8.971e-02 bg 0.000e+00 acc 0.750 G0 3.417 [380s]
+it 220 loss 8.9811e-02 task 8.970e-02 bg 0.000e+00 acc 0.750 G0 3.417 [398s]
+it 230 loss 8.9715e-02 task 8.969e-02 bg 0.000e+00 acc 0.750 G0 3.417 [416s]
+it 240 loss 8.9678e-02 task 8.967e-02 bg 0.000e+00 acc 0.750 G0 3.417 [434s]
+it 249 loss 8.9659e-02 task 8.965e-02 bg 0.000e+00 acc 0.750 G0 3.417 [450s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/amp_gate_NOT

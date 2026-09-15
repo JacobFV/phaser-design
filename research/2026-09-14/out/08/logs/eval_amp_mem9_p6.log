@@ -1,0 +1,8 @@
+amp_mem9_p6 pattern0: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.75
+amp_mem9_p6 pattern1: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.67
+amp_mem9_p6 pattern2: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.84
+amp_mem9_p6 pattern3: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.94
+amp_mem9_p6 pattern4: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 350000000000.00
+amp_mem9_p6 pattern5: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.76
+amp_mem9_p6 pattern6: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.76
+amp_mem9_p6 pattern7: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 3.73

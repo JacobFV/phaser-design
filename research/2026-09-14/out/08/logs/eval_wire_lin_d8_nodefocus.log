@@ -1,0 +1,2 @@
+wire_lin_d8_nodefocus src0_0: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 115000000000.00
+wire_lin_d8_nodefocus src1_0: acc(train window) 1.000 firstFail null extended-survival 525/10000 margin 1.53

@@ -1,0 +1,26 @@
+gate_lin_NOT_sd5: 3 cells, 2 cases, T=150, twin A64sd5
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.0767e-02 task 1.077e-02 bg 0.000e+00 acc 0.500 G0 2.000 [5s]
+it 10 loss 1.4549e-03 task 1.455e-03 bg 0.000e+00 acc 0.893 G0 2.000 [52s]
+it 20 loss 4.3221e-04 task 4.322e-04 bg 0.000e+00 acc 0.967 G0 2.000 [98s]
+it 30 loss 1.8278e-04 task 1.828e-04 bg 0.000e+00 acc 0.979 G0 2.000 [143s]
+it 40 loss 8.1136e-05 task 8.114e-05 bg 0.000e+00 acc 0.992 G0 2.000 [185s]
+it 50 loss 4.0913e-05 task 4.091e-05 bg 0.000e+00 acc 1.000 G0 2.000 [226s]
+it 60 loss 2.0192e-05 task 2.019e-05 bg 0.000e+00 acc 1.000 G0 2.000 [265s]
+it 70 loss 7.1693e-06 task 7.169e-06 bg 0.000e+00 acc 1.000 G0 2.000 [306s]
+it 80 loss 1.9104e-06 task 1.910e-06 bg 0.000e+00 acc 1.000 G0 2.000 [346s]
+it 90 loss 3.3207e-07 task 3.321e-07 bg 0.000e+00 acc 1.000 G0 2.000 [386s]
+it 100 loss 1.5090e-08 task 1.509e-08 bg 0.000e+00 acc 1.000 G0 2.000 [424s]
+it 110 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [460s]
+it 120 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [496s]
+it 130 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [532s]
+it 140 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [566s]
+it 150 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [598s]
+it 160 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [631s]
+it 170 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [662s]
+it 180 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [694s]
+it 190 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [726s]
+it 199 loss 0.0000e+00 task 0.000e+00 bg 0.000e+00 acc 1.000 G0 2.000 [755s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/gate_lin_NOT_sd5

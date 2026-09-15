@@ -1,0 +1,4 @@
+gate_lin_XOR_sd5 XOR00: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 90000000000.00
+gate_lin_XOR_sd5 XOR01: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 1.27
+gate_lin_XOR_sd5 XOR10: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 1.25
+gate_lin_XOR_sd5 XOR11: acc(train window) 1.000 firstFail null extended-survival 130/10000 margin 1.63

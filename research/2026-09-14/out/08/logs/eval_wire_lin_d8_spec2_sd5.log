@@ -1,0 +1,6 @@
+wire_lin_d8_spec2_sd5 src0_0: acc(train window) 1.000 firstFail null extended-survival 4125/10000 margin 1.94
+wire_lin_d8_spec2_sd5 src0_1: acc(train window) 1.000 firstFail null extended-survival 775/10000 margin 1.50
+wire_lin_d8_spec2_sd5 src0_2: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 90000000000.00
+wire_lin_d8_spec2_sd5 src1_0: acc(train window) 1.000 firstFail null extended-survival 500/10000 margin 1.28
+wire_lin_d8_spec2_sd5 src1_1: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 1.27
+wire_lin_d8_spec2_sd5 src1_2: acc(train window) 1.000 firstFail null extended-survival 321/10000 margin 1.36

@@ -1,0 +1,21 @@
+mem16_stat_T300: 16 cells, 8 cases, T=300, twin A64s
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:183: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 5.0330e-01 task 1.023e-01 bg 2.276e-01 acc 0.700 G0 2.166 [21s]
+it 10 loss 1.9136e-01 task 6.015e-02 bg 2.877e-02 acc 0.683 G0 2.139 [276s]
+it 20 loss 9.1607e-02 task 7.432e-02 bg 1.190e-02 acc 0.640 G0 2.122 [519s]
+it 30 loss 9.9719e-02 task 8.254e-02 bg 3.637e-03 acc 0.623 G0 2.113 [760s]
+it 40 loss 9.1554e-02 task 7.749e-02 bg 6.712e-03 acc 0.638 G0 2.112 [966s]
+it 50 loss 8.4643e-02 task 7.406e-02 bg 3.348e-03 acc 0.642 G0 2.114 [1160s]
+it 60 loss 7.0897e-02 task 6.175e-02 bg 4.923e-03 acc 0.688 G0 2.117 [1404s]
+it 70 loss 6.7472e-02 task 5.956e-02 bg 3.126e-03 acc 0.689 G0 2.119 [1568s]
+it 80 loss 6.3410e-02 task 5.671e-02 bg 5.000e-03 acc 0.709 G0 2.121 [1717s]
+it 90 loss 6.1173e-02 task 5.534e-02 bg 4.107e-03 acc 0.699 G0 2.122 [1907s]
+it 100 loss 6.3503e-02 task 5.688e-02 bg 1.299e-02 acc 0.688 G0 2.124 [2086s]
+it 110 loss 6.5610e-02 task 5.886e-02 bg 6.884e-03 acc 0.681 G0 2.127 [2269s]
+it 120 loss 6.7690e-02 task 5.858e-02 bg 3.097e-02 acc 0.662 G0 2.129 [2445s]
+it 130 loss 6.7422e-02 task 5.834e-02 bg 6.982e-03 acc 0.676 G0 2.129 [2620s]
+it 140 loss 6.7933e-02 task 5.774e-02 bg 1.240e-02 acc 0.680 G0 2.131 [2813s]
+it 149 loss 6.6791e-02 task 5.578e-02 bg 1.268e-02 acc 0.685 G0 2.134 [2974s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/mem16_stat_T300

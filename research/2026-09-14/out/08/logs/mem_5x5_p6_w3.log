@@ -1,0 +1,10 @@
+mem_5x5_p6_w3: 25 cells, 8 cases, T=120, twin A64
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:153: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 1.2219e+01 task 4.439e+00 bg 3.890e+01 acc 0.557 G0 2.791 [5s]
+it 10 loss 9.8486e+00 task 3.587e+00 bg 3.131e+01 acc 0.561 G0 2.709 [57s]
+it 20 loss 8.1057e+00 task 3.016e+00 bg 2.545e+01 acc 0.568 G0 2.635 [108s]
+it 30 loss 7.0872e+00 task 2.719e+00 bg 2.184e+01 acc 0.577 G0 2.574 [160s]
+it 40 loss 5.8415e+00 task 2.317e+00 bg 1.762e+01 acc 0.591 G0 2.513 [214s]
+it 50 loss 4.7024e+00 task 1.964e+00 bg 1.369e+01 acc 0.611 G0 2.454 [267s]

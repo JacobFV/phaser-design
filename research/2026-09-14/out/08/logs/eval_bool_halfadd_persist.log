@@ -1,0 +1,4 @@
+bool_halfadd_persist halfadd00: acc(train window) 1.000 firstFail null extended-survival 10000/10000 margin 290000000000.00
+bool_halfadd_persist halfadd01: acc(train window) 0.500 firstFail 60 extended-survival 201/10000 margin 0.00
+bool_halfadd_persist halfadd10: acc(train window) 0.500 firstFail 60 extended-survival 201/10000 margin 0.00
+bool_halfadd_persist halfadd11: acc(train window) 0.500 firstFail 60 extended-survival 201/10000 margin 0.00

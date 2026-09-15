@@ -1,0 +1,524 @@
+{
+ "twin": "A64s_amp",
+ "G0": 3.0330925071570043,
+ "Ig": 1.0,
+ "s": -0.8,
+ "Ia": 0.2,
+ "kerr": 0.0,
+ "I_init": 1.5,
+ "I_hi": 0.6,
+ "I_lo": 0.1,
+ "bg_max": 10,
+ "w_bg": 0,
+ "inj_amp": 6.0,
+ "iters": 6,
+ "lr": 0.03,
+ "noise": 0.01,
+ "learn_gain": true,
+ "side": 3,
+ "pitch": 6,
+ "w": 3,
+ "batch": 4,
+ "T": 60,
+ "w_stat": 5.0,
+ "stat_frac": 0.4,
+ "amp_margin": 0,
+ "tag": "smoke_amp_memory",
+ "task": "memory",
+ "cells": {
+  "m0_0": [
+   24,
+   24,
+   3
+  ],
+  "m0_1": [
+   30,
+   24,
+   3
+  ],
+  "m0_2": [
+   36,
+   24,
+   3
+  ],
+  "m1_0": [
+   24,
+   30,
+   3
+  ],
+  "m1_1": [
+   30,
+   30,
+   3
+  ],
+  "m1_2": [
+   36,
+   30,
+   3
+  ],
+  "m2_0": [
+   24,
+   36,
+   3
+  ],
+  "m2_1": [
+   30,
+   36,
+   3
+  ],
+  "m2_2": [
+   36,
+   36,
+   3
+  ]
+ },
+ "cases": [
+  {
+   "name": "pattern0",
+   "init_on": [],
+   "inject": [
+    {
+     "t": 1,
+     "cell": "m0_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_2",
+     "amp": 6.0,
+     "phase": 0.0
+    }
+   ],
+   "targets": [
+    {
+     "cell": "m0_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_0",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_1",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_2",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_0",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_1",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_2",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    }
+   ]
+  },
+  {
+   "name": "pattern1",
+   "init_on": [],
+   "inject": [
+    {
+     "t": 1,
+     "cell": "m0_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_2",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_2",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_2",
+     "amp": 6.0,
+     "phase": 0.0
+    }
+   ],
+   "targets": [
+    {
+     "cell": "m0_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    }
+   ]
+  },
+  {
+   "name": "pattern2",
+   "init_on": [],
+   "inject": [
+    {
+     "t": 1,
+     "cell": "m0_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_2",
+     "amp": 6.0,
+     "phase": 0.0
+    }
+   ],
+   "targets": [
+    {
+     "cell": "m0_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_2",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_2",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_0",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    }
+   ]
+  },
+  {
+   "name": "pattern3",
+   "init_on": [],
+   "inject": [
+    {
+     "t": 1,
+     "cell": "m0_1",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m0_2",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m1_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_0",
+     "amp": 6.0,
+     "phase": 0.0
+    },
+    {
+     "t": 1,
+     "cell": "m2_2",
+     "amp": 6.0,
+     "phase": 0.0
+    }
+   ],
+   "targets": [
+    {
+     "cell": "m0_0",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_1",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m0_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_1",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m1_2",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_0",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_1",
+     "value": 0,
+     "t_from": 20,
+     "t_to": 60
+    },
+    {
+     "cell": "m2_2",
+     "value": 1,
+     "t_from": 20,
+     "t_to": 60
+    }
+   ]
+  }
+ ],
+ "mask_file": "/Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/smoke_amp_memory_mask.f64",
+ "arch": {
+  "roof": true,
+  "defocus": 0,
+  "maxStep": 0.01,
+  "amp_dark": 0.0
+ },
+ "T_train": 60,
+ "history": [
+  {
+   "it": 0,
+   "loss": 0.1883837714298209,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.006009004646988
+  },
+  {
+   "it": 1,
+   "loss": 0.13516768036147164,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.011927753822162
+  },
+  {
+   "it": 2,
+   "loss": 0.09105597494940681,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.017675978096839
+  },
+  {
+   "it": 3,
+   "loss": 0.056117747461931385,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.0231706966283642
+  },
+  {
+   "it": 4,
+   "loss": 0.030225313221323803,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.028332163651423
+  },
+  {
+   "it": 5,
+   "loss": 0.012955133746199462,
+   "task": 0.0,
+   "bg": 0.0,
+   "acc": 1.0,
+   "G0": 3.0330925071570043
+  }
+ ],
+ "amp_file": "/Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/smoke_amp_memory_amp.f64",
+ "amp_dark": 0.0,
+ "amp_clear_fraction": 0.019775390625
+}

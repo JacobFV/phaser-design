@@ -1,0 +1,31 @@
+ring4_nl_p10: 4 cells, 1 cases, T=120, twin A64sd5
+/Users/vibestartup/Code/phaser-design/research/2026-09-14/08-design.py:206: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  hist.append(dict(it=it, loss=L.item(), task=lt, bg=lb, acc=acc, G0=float(1 + torch.exp(self.logG))))
+it 0 loss 6.1385e-02 task 6.139e-02 bg 0.000e+00 acc 0.750 G0 2.206 [2s]
+it 10 loss 6.0561e-02 task 6.056e-02 bg 0.000e+00 acc 0.750 G0 2.192 [15s]
+it 20 loss 6.0724e-02 task 6.072e-02 bg 0.000e+00 acc 0.750 G0 2.185 [30s]
+it 30 loss 6.0513e-02 task 6.051e-02 bg 0.000e+00 acc 0.750 G0 2.182 [44s]
+it 40 loss 6.0294e-02 task 6.029e-02 bg 0.000e+00 acc 0.750 G0 2.181 [58s]
+it 50 loss 6.0068e-02 task 6.007e-02 bg 0.000e+00 acc 0.750 G0 2.181 [72s]
+it 60 loss 5.9789e-02 task 5.979e-02 bg 0.000e+00 acc 0.750 G0 2.181 [86s]
+it 70 loss 5.9441e-02 task 5.944e-02 bg 0.000e+00 acc 0.750 G0 2.181 [101s]
+it 80 loss 5.9095e-02 task 5.909e-02 bg 0.000e+00 acc 0.750 G0 2.181 [115s]
+it 90 loss 5.8920e-02 task 5.892e-02 bg 0.000e+00 acc 0.750 G0 2.181 [129s]
+it 100 loss 5.8700e-02 task 5.870e-02 bg 0.000e+00 acc 0.750 G0 2.182 [144s]
+it 110 loss 5.8590e-02 task 5.859e-02 bg 0.000e+00 acc 0.750 G0 2.182 [158s]
+it 120 loss 5.8544e-02 task 5.854e-02 bg 0.000e+00 acc 0.750 G0 2.182 [173s]
+it 130 loss 5.8505e-02 task 5.850e-02 bg 0.000e+00 acc 0.753 G0 2.182 [187s]
+it 140 loss 5.8458e-02 task 5.846e-02 bg 0.000e+00 acc 0.753 G0 2.182 [201s]
+it 150 loss 5.8423e-02 task 5.842e-02 bg 0.000e+00 acc 0.757 G0 2.182 [215s]
+it 160 loss 5.8348e-02 task 5.835e-02 bg 0.000e+00 acc 0.767 G0 2.182 [232s]
+it 170 loss 5.8342e-02 task 5.834e-02 bg 0.000e+00 acc 0.764 G0 2.182 [245s]
+it 180 loss 5.8299e-02 task 5.830e-02 bg 0.000e+00 acc 0.767 G0 2.182 [259s]
+it 190 loss 5.8257e-02 task 5.826e-02 bg 0.000e+00 acc 0.767 G0 2.182 [273s]
+it 200 loss 5.8223e-02 task 5.822e-02 bg 0.000e+00 acc 0.767 G0 2.182 [286s]
+it 210 loss 5.8186e-02 task 5.819e-02 bg 0.000e+00 acc 0.771 G0 2.183 [300s]
+it 220 loss 5.8172e-02 task 5.817e-02 bg 0.000e+00 acc 0.767 G0 2.183 [314s]
+it 230 loss 5.8195e-02 task 5.819e-02 bg 0.000e+00 acc 0.767 G0 2.183 [327s]
+it 240 loss 5.8135e-02 task 5.814e-02 bg 0.000e+00 acc 0.771 G0 2.183 [341s]
+it 249 loss 5.8073e-02 task 5.807e-02 bg 0.000e+00 acc 0.771 G0 2.183 [353s]
+saved /Users/vibestartup/Code/phaser-design/research/2026-09-14/out/08/ring4_nl_p10
