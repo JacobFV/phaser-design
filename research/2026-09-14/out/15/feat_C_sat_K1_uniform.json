@@ -1,0 +1,10 @@
+{
+ "opName": "C_sat",
+ "K": 1,
+ "steps": 3200,
+ "tag": "uniform",
+ "note": "LCD+MLA cavity",
+ "t_rt": 2.726693434470102e-10,
+ "secs": 21.065023084,
+ "maxI": 6.285151347410167
+}

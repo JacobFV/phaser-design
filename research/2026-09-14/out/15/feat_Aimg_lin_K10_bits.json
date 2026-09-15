@@ -1,0 +1,10 @@
+{
+ "opName": "Aimg_lin",
+ "K": 10,
+ "steps": 3200,
+ "tag": "bits",
+ "note": "self-imaging + preset random mask, global gain",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 51.102767667,
+ "maxI": 2.1886893423928115
+}

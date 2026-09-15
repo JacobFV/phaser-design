@@ -1,0 +1,10 @@
+{
+ "opName": "Aimg_sat",
+ "K": 1,
+ "steps": 3200,
+ "tag": "uniform",
+ "note": "self-imaging + random mask, local gain + weak absorber",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 11.673903833999999,
+ "maxI": 1.7598129987111055
+}

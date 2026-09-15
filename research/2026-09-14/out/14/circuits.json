@@ -1,0 +1,87 @@
+{
+ "parity8": {
+  "gates": 11,
+  "by_type": {
+   "XOR": 11
+  },
+  "depth": 3,
+  "inputs": 8,
+  "outputs": 1,
+  "wires": 19,
+  "exhaustive": [
+   256,
+   256
+  ]
+ },
+ "sat_step8": {
+  "gates": 66,
+  "by_type": {
+   "OR": 22,
+   "NOT": 2,
+   "AND": 26,
+   "XOR": 16
+  },
+  "depth": 24,
+  "inputs": 16,
+  "outputs": 8,
+  "wires": 82,
+  "exhaustive": [
+   65536,
+   65536
+  ]
+ },
+ "gcd8_sub_iteration": {
+  "gates": 202,
+  "by_type": {
+   "C1": 1,
+   "NOT": 49,
+   "XOR": 40,
+   "AND": 81,
+   "OR": 32
+  },
+  "depth": 31,
+  "inputs": 16,
+  "outputs": 17,
+  "wires": 219,
+  "exhaustive": [
+   6304,
+   6304
+  ],
+  "iterations_max": 248,
+  "iterations_mean": 16.330901015228427
+ },
+ "accumulator_machine_step": {
+  "gates": 316,
+  "by_type": {
+   "NOT": 40,
+   "AND": 169,
+   "C1": 6,
+   "OR": 79,
+   "C0": 3,
+   "XOR": 28
+  },
+  "depth": 20,
+  "inputs": 31,
+  "outputs": 24,
+  "wires": 356,
+  "rom_gates_estimate": 224,
+  "state_bits": 25,
+  "instruction_bits": 7
+ },
+ "programs": {
+  "parity8_on_accumulator": {
+   "note": "bitwise loop over 8 bits needs shift; the 8-op ISA has no shift \u2192 8 LOAD/XOR pairs over pre-split bit cells",
+   "instructions_executed": 17,
+   "ram_cells_needed": 9
+  },
+  "sat_step_on_accumulator": {
+   "note": "compare-and-branch on sign and saturation, then ADD/DEC",
+   "instructions_executed_worst": 9
+  },
+  "gcd8_on_accumulator": {
+   "note": "repeated subtraction with 4-bit data cannot hold 8-bit values; needs an 8-bit datapath and SUB (\u2248 DEC+ADD sequence)",
+   "instructions_per_iteration": 8,
+   "iterations_worst": 255
+  }
+ }
+}

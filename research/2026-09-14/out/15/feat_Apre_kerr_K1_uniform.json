@@ -1,0 +1,10 @@
+{
+ "opName": "Apre_kerr",
+ "K": 1,
+ "steps": 3200,
+ "tag": "uniform",
+ "note": "as Apre_sat plus Kerr κ=1",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 13.546403833000001,
+ "maxI": 4.4762842907649105
+}

@@ -1,0 +1,10 @@
+{
+ "opName": "B_sat",
+ "K": 1,
+ "steps": 3200,
+ "tag": "uniform",
+ "note": "linear 4f LCD cavity",
+ "t_rt": 2.6692703106587904e-9,
+ "secs": 19.654445583,
+ "maxI": 7.216057650092081
+}

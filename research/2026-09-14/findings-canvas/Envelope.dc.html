@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <style>
+    body { margin: 0; background: #000000; color: #f2f2f2; font: 15px/1.5 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: 'tnum' 1; }
+    a { color: #f2f2f2; text-decoration-color: #3a3a3a; } a:hover { color: #9fc3ff; }
+    h1, h2, h3, p { margin: 0; }
+    .badge { display: inline-block; font: 500 10px/16px 'IBM Plex Mono', ui-monospace, Menlo, monospace; padding: 0 6px; border-radius: 3px; border: 1px solid #3a3a3a; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; color: #9a9a9a; }
+    .b-measured { color: #8fd6a4; border-color: #2a4a33; }
+    .b-validated { color: #9fc3ff; border-color: #2c3d5a; }
+    .b-extrap { color: #e6c07a; border-color: #4d3f22; }
+    .b-fail { color: #ff7a7a; border-color: #4a2222; }
+    .b-pending { color: #9a9a9a; border-color: #3a3a3a; }
+    table { border-collapse: collapse; width: 100%; }
+    th { text-align: left; font: 400 10.5px/1.3 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #6a6a6a; padding: 8px 10px; border-bottom: 1px solid #3a3a3a; vertical-align: bottom; }
+    td { font-size: 13.5px; line-height: 1.45; padding: 9px 10px; border-bottom: 1px solid #222222; vertical-align: top; text-wrap: pretty; }
+    td.num { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; white-space: nowrap; }
+    svg text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+  </style>
+</helmet>
+<div style="width: 1280px; min-height: 1720px; background: #000000; padding: 52px 56px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px;">
+  <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #222222;">
+    <div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">Experiment 20 · consolidated</div>
+    <h1 style="font: 500 34px/1.15 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: -0.01em; color: #f2f2f2; text-wrap: balance; max-width: 1040px;">Capability envelope</h1>
+  </div>
+  
+  <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><table>
+    <tr><th style="width: 26%;">Property</th><th style="width: 33%;">Best measured result</th><th style="width: 27%;">Configuration</th><th>Evidence</th></tr>
+    <tr><td style="color: #9a9a9a;">Minimum persistent state</td><td style="color: #f2f2f2;">3 px cell (60 µm) with 3 px absorbing gaps</td><td style="color: #9a9a9a;">Self-imaging SLM ring + absorbing LCD, G0 3; ideal or 1000:1 contrast, gain noise ≤ 10⁻³</td><td><span class="badge b-measured">to 10⁵ trips</span></td></tr><tr><td style="color: #9a9a9a;">Persistent states / mm²</td><td style="color: #f2f2f2;">69 (120 µm pitch); a designed program held 8/8 random patterns to 10⁴ trips</td><td style="color: #9a9a9a;">same</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Linear states surviving 100 trips / mm²</td><td style="color: #f2f2f2;">278 (60 µm pitch)</td><td style="color: #9a9a9a;">Self-imaging ring, flat field, 650 nm</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Linear states surviving 10³ trips / mm²</td><td style="color: #f2f2f2;">39 at 650 nm · 69 at 450 nm</td><td style="color: #9a9a9a;">same</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Linear states surviving 10⁴ trips</td><td style="color: #f2f2f2;">none — dephasing ceiling ≈ 2–4×10³ trips</td><td style="color: #9a9a9a;">any linear configuration</td><td><span class="badge b-validated">exact to 10⁶ · checked 10⁵</span></td></tr><tr><td style="color: #9a9a9a;">Long-lived effective modes (τ > 10⁵ trips, relative to the gain-clamped dominant mode)</td><td style="color: #f2f2f2;">344 (B, 450 nm, lens-sampling caveat) · 235 (A, 450 nm) · 155 (B, 650 nm) · 85 (A, 650 nm)</td><td style="color: #9a9a9a;">exact eigen-spectra of 4096×4096 operators</td><td><span class="badge b-measured">exact</span></td></tr><tr><td style="color: #9a9a9a;">Autonomous state progression</td><td style="color: #f2f2f2;">2-state toggle to 3162 trips; 12-state cycle to ~500; designed 4-cell one-hot ring ~16 ticks</td><td style="color: #9a9a9a;">preset relay + one static SLM lens; −I ring; designed linear program</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Wire</td><td style="color: #f2f2f2;">160 µm, holds to 10⁴ trips; 1–3 trips latency per pixel</td><td style="color: #9a9a9a;">defocused self-imaging ring, linear, single wire</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Persistent gates</td><td style="color: #f2f2f2;">AND 4/4 cases to 10⁴ trips (settles by trip 184); OR, XOR, NAND, NOT failed; linear XOR transient</td><td style="color: #9a9a9a;">absorbing-mask architecture</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Set / reset latch</td><td style="color: #f2f2f2;">hold works in both states; set takes ~180 trips; reset not achieved</td><td style="color: #9a9a9a;">absorbing-mask architecture, rail</td><td><span class="badge b-fail">failed</span></td></tr><tr><td style="color: #9a9a9a;">Autonomous logic depth</td><td style="color: #f2f2f2;">0 — no functionally complete persistent gate set</td><td style="color: #9a9a9a;">—</td><td><span class="badge b-fail">not achieved</span></td></tr><tr><td style="color: #9a9a9a;">Machine instructions executed</td><td style="color: #f2f2f2;">0 — not attempted: no complete gate set and no resettable register</td><td style="color: #9a9a9a;">—</td><td><span class="badge b-pending">not attempted</span></td></tr><tr><td style="color: #9a9a9a;">Reservoir memory horizon</td><td style="color: #f2f2f2;">37 input steps (370 trips, ≈ 250 ns); capacity 34.6</td><td style="color: #9a9a9a;">preset relay, linear, K = 10</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Control update performance</td><td style="color: #f2f2f2;">tracking error 0.87 ± 0.49 at 150 MHz frames (ESN 0.98 ± 0.68, memoryless 1.57)</td><td style="color: #9a9a9a;">preset relay, K = 10</td><td><span class="badge b-measured">measured</span></td></tr><tr><td style="color: #9a9a9a;">Round-trip rate</td><td style="color: #f2f2f2;">0.37 GHz (B) · 1.50 GHz (A) · 3.67 GHz (C)</td><td style="color: #9a9a9a;">Σ n_g L / c over the route</td><td><span class="badge b-validated">analytical</span></td></tr>
+  </table></div>
+  <div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">A first physical prototype — estimates, not measurements</div>
+  <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><table>
+    <tr><th style="width: 26%;">Quantity</th><th style="width: 60%;">Estimate</th><th>Basis</th></tr>
+    <tr><td style="color: #9a9a9a;">Persistent bits</td><td style="color: #f2f2f2;">~9–16 in this relay’s flat field; ~70 per mm² of unvignetted field with a wider relay</td><td><span class="badge b-extrap">extrapolated</span></td></tr><tr><td style="color: #9a9a9a;">Transient latent dimensions</td><td style="color: #f2f2f2;">~44 lattice states or ~200 modes living > 100 trips</td><td><span class="badge b-extrap">inferred</span></td></tr><tr><td style="color: #9a9a9a;">Internal recurrence frequency</td><td style="color: #f2f2f2;">1.5 GHz (0.67 ns per trip)</td><td><span class="badge b-validated">analytical</span></td></tr><tr><td style="color: #9a9a9a;">Useful algorithmic update rate</td><td style="color: #f2f2f2;">10–100 trips per step → 15–150 MHz</td><td><span class="badge b-extrap">inferred</span></td></tr><tr><td style="color: #9a9a9a;">Sensor input bandwidth</td><td style="color: #f2f2f2;">one frame per ~10 trips (150 MHz) optically; mask updates ~200 Hz from the preset LCOS switching time (5 ms)</td><td><span class="badge b-extrap">inferred</span></td></tr><tr><td style="color: #9a9a9a;">Action output</td><td style="color: #f2f2f2;">256 detector bins read linearly once per frame; physical detector and readout rate not modeled</td><td><span class="badge b-pending">speculative</span></td></tr>
+  </table></div>
+
+</div>
+</x-dc>
+</body>
+</html>

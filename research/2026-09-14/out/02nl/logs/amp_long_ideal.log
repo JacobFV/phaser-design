@@ -1,0 +1,2 @@
+amp cell 3 gap 3 G0 3 s -0.8 Ia 0.2 dark 0: BER@30000 0.000/0.000/0.000 onMean 1.61/1.51/1.62 offMax 0.006/0.004/0.005 λL -2.5e-3/-3.8e-4/-8.9e-4 resid 2.0e+0/2.0e+0/2.0e+0 [1618s]
+amp cell 3 gap 3 G0 3 s -0.8 Ia 0.2 dark 0: BER@100000 0.000 onMean 1.61 offMax 0.006 λL -2.9e-3 resid 2.0e+0 [1381s]

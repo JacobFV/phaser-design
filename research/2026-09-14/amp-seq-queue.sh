@@ -1,0 +1,16 @@
+#!/bin/bash
+# Experiment 10 (absorbing-mask sequencers): toggle and 4-cell ring counter on the defocused ring with a learnable absorbing
+# program, gated on amp-queue.sh. Each re-evaluated in JS to 1e4 trips.
+cd "$(dirname "$0")"
+source /private/tmp/claude-504/-Users-vibestartup-Code-phaser-design/0e63674b-7461-4a57-ace5-b5d3facc5ac4/scratchpad/venv/bin/activate
+export TORCH_THREADS=2 OMP_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2
+while ps -Ao args= | awk '$1 ~ /bash$/ && $2 ~ /amp-queue\.sh$/ {f=1} END {exit !f}'; do sleep 60; done
+design() {
+  local tag; tag=$(python3 -c "import json,sys;print(json.loads(sys.argv[1])['tag'])" "$2")
+  if [ ! -f "out/08/${tag}_spec.json" ]; then python 08-design.py "$1" "$2" > "out/08/logs/${tag}.log" 2>&1; fi
+  [ -f "out/08/${tag}_spec.json" ] && npx vite-node 08-eval.ts "out/08/${tag}_spec.json" 10000 > "out/08/logs/eval_${tag}.log" 2>&1
+}
+A='"twin":"A64sd5_amp","G0":3.0,"s":-0.8,"Ia":0.2,"I_hi":0.6,"I_lo":0.1,"bg_max":10,"w_bg":0,"lr":0.05,"lr_amp":0.2,"noise":0.01,"w":3,"amp_margin":0,"amp_bg":-1'
+design toggle "{$A,\"radius\":6,\"period\":10,\"settle\":4,\"T\":120,\"iters\":250,\"tag\":\"amp_toggle_p10\"}"
+design ring "{$A,\"N\":4,\"radius\":8,\"period\":10,\"settle\":4,\"T\":120,\"iters\":250,\"tag\":\"amp_ring4_p10\"}"
+echo amp-seq-queue done

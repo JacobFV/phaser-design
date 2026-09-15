@@ -1,0 +1,4 @@
+none cell 3 pitch 6 G0 1.9 s -0.8 Ia 0.3: BER@1500 0.592/0.510/0.510 onMed 0.00/0.00/0.00 offMax 0.000/0.000/0.000 λL NaN/NaN/NaN [109s]
+none cell 3 pitch 6 G0 1.9 s -0.6 Ia 0.05: BER@1500 0.286/0.265/0.388 onMed 0.48/0.40/0.00 offMax 0.543/0.397/0.748 λL NaN/NaN/NaN [83s]
+none cell 3 pitch 6 G0 2.2 s -0.8 Ia 0.3: BER@1500 0.592/0.510/0.510 onMed 0.00/0.00/0.00 offMax 0.000/0.000/0.000 λL NaN/NaN/NaN [98s]
+none cell 3 pitch 6 G0 2.2 s -0.6 Ia 0.05: BER@1500 0.408/0.490/0.490 onMed 2.04/2.02/2.05 offMax 2.536/2.537/2.444 λL NaN/NaN/NaN [76s]

@@ -1,0 +1,4 @@
+moat cell 3 pitch 6 G0 3 s -0.6 Ia 0.05: BER@1500 0.490/0.367/0.571 onMed 0.02/0.90/0.01 offMax 3.673/3.315/3.686 λL NaN/NaN/NaN [105s]
+moat cell 3 pitch 6 G0 3 s -0.8 Ia 0.3: BER@1500 0.490/0.388/0.388 onMed 0.00/0.00/0.00 offMax 0.008/0.008/0.011 λL NaN/NaN/NaN [79s]
+moat cell 3 pitch 6 G0 3.8 s -0.6 Ia 0.05: BER@1500 0.388/0.388/0.612 onMed 0.58/1.57/0.02 offMax 6.418/5.815/6.186 λL NaN/NaN/NaN [95s]
+moat cell 3 pitch 6 G0 3.8 s -0.8 Ia 0.3: BER@1500 0.408/0.327/0.388 onMed 0.01/0.01/0.00 offMax 4.855/4.456/4.787 λL NaN/NaN/NaN [81s]

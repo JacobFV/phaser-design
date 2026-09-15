@@ -1,0 +1,17 @@
+{
+ "q": 2,
+ "p": 1,
+ "hardware": "A_img without roof (M = −I)",
+ "slmPower_D": 0,
+ "horizon": 20000,
+ "noiseRel": 0,
+ "nonlinear": true,
+ "t_rt": 6.673175776646975e-10,
+ "trips_per_tick": 1,
+ "ticks_per_cycle": 2,
+ "clock_frequency_Hz": 1498536878.7969544,
+ "first_sequence_error": 3162,
+ "decoded_fraction_ok": 0.9583333333333334,
+ "min_contrast": null,
+ "late_mean_best_overlap": null
+}

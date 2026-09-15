@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <style>
+    body { margin: 0; background: #000000; color: #f2f2f2; font: 15px/1.5 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: 'tnum' 1; }
+    a { color: #f2f2f2; text-decoration-color: #3a3a3a; } a:hover { color: #9fc3ff; }
+    h1, h2, h3, p { margin: 0; }
+    .badge { display: inline-block; font: 500 10px/16px 'IBM Plex Mono', ui-monospace, Menlo, monospace; padding: 0 6px; border-radius: 3px; border: 1px solid #3a3a3a; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; color: #9a9a9a; }
+    .b-measured { color: #8fd6a4; border-color: #2a4a33; }
+    .b-validated { color: #9fc3ff; border-color: #2c3d5a; }
+    .b-extrap { color: #e6c07a; border-color: #4d3f22; }
+    .b-fail { color: #ff7a7a; border-color: #4a2222; }
+    .b-pending { color: #9a9a9a; border-color: #3a3a3a; }
+    table { border-collapse: collapse; width: 100%; }
+    th { text-align: left; font: 400 10.5px/1.3 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #6a6a6a; padding: 8px 10px; border-bottom: 1px solid #3a3a3a; vertical-align: bottom; }
+    td { font-size: 13.5px; line-height: 1.45; padding: 9px 10px; border-bottom: 1px solid #222222; vertical-align: top; text-wrap: pretty; }
+    td.num { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; white-space: nowrap; }
+    svg text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+  </style>
+</helmet>
+<div style="width: 1280px; min-height: 1720px; background: #000000; padding: 52px 56px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px;">
+  <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #222222;">
+    <div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">PHASER capability sprint · research findings · 2026-09-14</div>
+    <h1 style="font: 500 34px/1.15 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: -0.01em; color: #f2f2f2; text-wrap: balance; max-width: 1040px;">What a static optical program can hold, move and compute</h1>
+  </div>
+  
+  <p style="font-size: 17px; line-height: 1.55; color: #9a9a9a; max-width: 980px; text-wrap: pretty;">Twenty planned experiments on the headless PHASER simulator, reported here as far as they have run, with the optical program held fixed for 10⁴–10⁶ round trips. Numbers are measured in the simulator unless badged otherwise; long horizons use exact matrix powers checked against direct simulation to 10⁻¹¹ at 10⁵ trips.</p>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px;">
+  <div style="font: 500 38px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: -0.02em; color: #f2f2f2;">0</div>
+  <p style="font-size: 14px; line-height: 1.45; color: #9a9a9a; text-wrap: pretty; flex-grow: 1;">persistent bit patterns from any phase-only static program, hand-built or gradient-designed</p>
+  <div><span class="badge b-fail">failed</span></div>
+</div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px;">
+  <div style="font: 500 38px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: -0.02em; color: #f2f2f2;">10⁵</div>
+  <p style="font-size: 14px; line-height: 1.45; color: #9a9a9a; text-wrap: pretty; flex-grow: 1;">round trips with zero bit errors — bistable cells behind a static absorbing mask; also holds at 1000:1 contrast and with gain noise</p>
+  <div><span class="badge b-measured">measured</span></div>
+</div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px;">
+  <div style="font: 500 38px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: -0.02em; color: #f2f2f2;">2–4×10³</div>
+  <p style="font-size: 14px; line-height: 1.45; color: #9a9a9a; text-wrap: pretty; flex-grow: 1;">round trips: the dephasing ceiling on every linear state, lattice and clock</p>
+  <div><span class="badge b-validated">exact to 10⁶ · checked 10⁵</span></div>
+</div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px;">
+  <div style="font: 500 38px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; letter-spacing: -0.02em; color: #f2f2f2;">10</div>
+  <p style="font-size: 14px; line-height: 1.45; color: #9a9a9a; text-wrap: pretty; flex-grow: 1;">optical trips per sensor frame was the best of K = 1…10⁵ for control; 10⁴ destroys the policy</p>
+  <div><span class="badge b-measured">measured</span></div>
+</div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 0;">
+    <div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; margin-bottom: 6px;">Twelve findings</div>
+    <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">01</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">No localized state is a fixed point of the linear cavity. In the self-imaging SLM ring 2–3 px dots keep their shape ~2×10³ round trips (1.6 µs), then dephase — with near-perfect revivals at 2.3×10⁴ trips.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">02</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Capacity is set by relay étendue, not pixels: 85 of 4096 modes live beyond 10⁵ trips, and only the central ±200 µm of the 1.28 mm field is unvignetted.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">03</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Transient bit lattices at 650 nm: 278 bits/mm² for 128 trips, 39 bits/mm² for 1024. Lifetime grows as pitch², so density × lifetime ≈ 4×10⁴ bit·trips/mm²; below 3 px pitch decoding fails at once (at 450 nm a 2 px lattice lasts 64 trips).</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">04</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Gain compensates loss, not dephasing. A bistable gain + absorber medium with phase-only masks never held a bit pattern: the ON state invades or dies.</p>
+      <div style="text-align: right;"><span class="badge b-fail">failed</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">05</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Masks designed by gradient descent and re-checked in the simulator learned timed transients: the first design held exactly through its 150-trip training horizon, then the field lased over it; the fixed-point-constrained redesign never exceeded 87 % and was fully wrong by trip 301.</p>
+      <div style="text-align: right;"><span class="badge b-fail">failed</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">06</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">A static absorbing amplitude mask (cells clear, gaps dark) plus saturable gain and absorber gives stable bistable bits: 9/9 cells, 0 errors to 10⁵ trips (67 µs), perturbations decaying (λ < 0); 3/3 seeds also hold at 1000:1 contrast and with gain noise up to 10⁻³ per trip. Gain window G0 ≈ 2.8–3.4. A gradient-designed absorbing memory held all 8 random patterns to 10⁴ trips; at 100 µm pitch only 3 of 8.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">07</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Static linear wires move a bit 80–480 µm with 1–3 trips of latency per pixel, but hold only when the destination is the cavity’s dominant eigenmode — one attractor per cavity.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">08</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Universal persistent logic was not achieved. Linear gates are transient (XOR fails at trip 130). With the absorbing mask only AND became persistent (4/4, settles by trip 184); OR, XOR, NAND, NOT and a set/reset latch failed — the isolation that makes bits permanent stops one input switching an output, and power rails flood neighbours.</p>
+      <div style="text-align: right;"><span class="badge b-fail">mostly failed</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">09</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Static optics are a clock: the −I ring toggles every trip and one SLM lens turns the relay into 5-, 7- or 12-state cycles. All fail at 0.5–3×10³ trips — from dephasing, not noise. A designed linear 4-cell ring counter stepped correctly for ~16 ticks; designed nonlinear toggles and rings failed.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">10</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">The best reservoir is the “messy” non-imaging relay: memory capacity 35 (37-step horizon), NARMA10 NMSE 0.19, against 7 and 0.66 for a 256-unit ESN. The self-imaging ring scores 2–5.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">11</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Extra recurrence between sensor frames hurts control: of K = 1, 10, …, 10⁵ trips per frame, tracking is best at 10 (error 0.87 ± 0.49, on par with an ESN at 0.98 ± 0.68); at 10⁴ trips per frame the policy loses the target, and the self-imaging ring at best matches a memoryless readout.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div><div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #222222;">
+      <div style="font: 500 13px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">12</div>
+      <p style="font-size: 15px; line-height: 1.5; color: #f2f2f2; text-wrap: pretty;">Cheap LCD + microlens optics lose capability, not just efficiency (≤ 5 modes past 10³ trips, no lattice past 32). Blue light gives ~2.8× the long-lived modes and ~2× the lifetimes — never a qualitative change.</p>
+      <div style="text-align: right;"><span class="badge b-measured">measured</span></div>
+    </div>
+  </div>
+  <p style="font: 12px/1.5 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">Still running when this page was made (Exps 7, 10–12, 16): adders, parity and saturating step, countdown, associative memory, absorbing-mask sequencers, a persistent wire and OR with a rail. Full write-up: research/2026-09-14/REPORT.md</p>
+
+</div>
+</x-dc>
+</body>
+</html>

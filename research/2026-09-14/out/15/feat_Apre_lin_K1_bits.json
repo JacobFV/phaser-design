@@ -1,0 +1,10 @@
+{
+ "opName": "Apre_lin",
+ "K": 1,
+ "steps": 3200,
+ "tag": "bits",
+ "note": "global saturable gain (linear optics, intensity detection)",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 11.696919916999999,
+ "maxI": 9.552469392700317
+}

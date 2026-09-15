@@ -1,0 +1,16 @@
+Apre_lin K=10 uniform: 3200 steps in 77 s, max |E|² 2.626
+Apre_lin K=10 bits: 3200 steps in 74 s, max |E|² 3.187
+Apre_sat K=10 uniform: 3200 steps in 71 s, max |E|² 0.660
+Apre_sat K=10 bits: 3200 steps in 69 s, max |E|² 0.870
+Apre_sat2 K=10 uniform: 3200 steps in 68 s, max |E|² 9.345
+Apre_sat2 K=10 bits: 3200 steps in 67 s, max |E|² 8.151
+Apre_kerr K=10 uniform: 3200 steps in 70 s, max |E|² 0.637
+Apre_kerr K=10 bits: 3200 steps in 60 s, max |E|² 0.691
+Aimg_lin K=10 uniform: 3200 steps in 52 s, max |E|² 3.491
+Aimg_lin K=10 bits: 3200 steps in 51 s, max |E|² 2.189
+Aimg_sat K=10 uniform: 3200 steps in 64 s, max |E|² 0.456
+Aimg_sat K=10 bits: 3200 steps in 59 s, max |E|² 0.644
+B_sat K=10 uniform: 3200 steps in 147 s, max |E|² 0.929
+B_sat K=10 bits: 3200 steps in 141 s, max |E|² 1.045
+C_sat K=10 uniform: 3200 steps in 26166 s, max |E|² 2.670
+C_sat K=10 bits: 3200 steps in 179 s, max |E|² 2.644

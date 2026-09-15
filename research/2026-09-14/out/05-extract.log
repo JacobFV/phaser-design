@@ -1,0 +1,6 @@
+A_img: 64² extracted in 4.1 s; t_rt 0.667 ns
+A_preset: 64² extracted in 4.5 s; t_rt 0.667 ns
+A_img_rand: 64² extracted in 4.2 s; t_rt 0.667 ns
+B_4f: 64² extracted in 7.5 s; t_rt 2.669 ns
+B_flat: 64² extracted in 2.9 s; t_rt 2.669 ns
+C_mla: 64² extracted in 6.7 s; t_rt 0.277 ns

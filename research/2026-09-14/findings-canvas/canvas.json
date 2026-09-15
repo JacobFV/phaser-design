@@ -1,0 +1,79 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Overview",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1720
+    },
+    {
+      "file": "Envelope.dc.html",
+      "title": "Capability envelope",
+      "x": 1420,
+      "y": 0,
+      "w": 1280,
+      "h": 1720
+    },
+    {
+      "file": "Storage.dc.html",
+      "title": "Storage · Exps 1–3",
+      "x": 2840,
+      "y": 0,
+      "w": 1280,
+      "h": 1180
+    },
+    {
+      "file": "Modes.dc.html",
+      "title": "Modes & coupling · Exps 4–5",
+      "x": 0,
+      "y": 1880,
+      "w": 1280,
+      "h": 1000
+    },
+    {
+      "file": "Dynamics.dc.html",
+      "title": "Regimes & clocks · Exps 6, 10",
+      "x": 1420,
+      "y": 1880,
+      "w": 1280,
+      "h": 1000
+    },
+    {
+      "file": "Temporal.dc.html",
+      "title": "Reservoir & control · Exps 15, 17",
+      "x": 2840,
+      "y": 1880,
+      "w": 1280,
+      "h": 1000
+    },
+    {
+      "file": "Logic.dc.html",
+      "title": "Memory & logic · Exps 2, 7–9, 11–14",
+      "x": 0,
+      "y": 3040,
+      "w": 1280,
+      "h": 1760
+    },
+    {
+      "file": "Hardware.dc.html",
+      "title": "Hardware · Exps 18–19",
+      "x": 1420,
+      "y": 3040,
+      "w": 1280,
+      "h": 940
+    },
+    {
+      "file": "Implications.dc.html",
+      "title": "Implications & next",
+      "x": 2840,
+      "y": 3040,
+      "w": 1280,
+      "h": 1420
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

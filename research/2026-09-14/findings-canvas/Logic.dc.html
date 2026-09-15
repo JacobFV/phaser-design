@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <style>
+    body { margin: 0; background: #000000; color: #f2f2f2; font: 15px/1.5 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: 'tnum' 1; }
+    a { color: #f2f2f2; text-decoration-color: #3a3a3a; } a:hover { color: #9fc3ff; }
+    h1, h2, h3, p { margin: 0; }
+    .badge { display: inline-block; font: 500 10px/16px 'IBM Plex Mono', ui-monospace, Menlo, monospace; padding: 0 6px; border-radius: 3px; border: 1px solid #3a3a3a; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; color: #9a9a9a; }
+    .b-measured { color: #8fd6a4; border-color: #2a4a33; }
+    .b-validated { color: #9fc3ff; border-color: #2c3d5a; }
+    .b-extrap { color: #e6c07a; border-color: #4d3f22; }
+    .b-fail { color: #ff7a7a; border-color: #4a2222; }
+    .b-pending { color: #9a9a9a; border-color: #3a3a3a; }
+    table { border-collapse: collapse; width: 100%; }
+    th { text-align: left; font: 400 10.5px/1.3 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #6a6a6a; padding: 8px 10px; border-bottom: 1px solid #3a3a3a; vertical-align: bottom; }
+    td { font-size: 13.5px; line-height: 1.45; padding: 9px 10px; border-bottom: 1px solid #222222; vertical-align: top; text-wrap: pretty; }
+    td.num { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; white-space: nowrap; }
+    svg text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+  </style>
+</helmet>
+<div style="width: 1280px; min-height: 1760px; background: #000000; padding: 52px 56px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px;">
+  <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #222222;">
+    <div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">Experiments 2 (nonlinear), 7–9, 11–14</div>
+    <h1 style="font: 500 34px/1.15 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: -0.01em; color: #f2f2f2; text-wrap: balance; max-width: 1040px;">Memory and logic: persistent bits yes, universal persistent logic no</h1>
+  </div>
+  
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;"><span class="badge b-fail">failed</span><h3 style="font: 600 16px/1.3 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #f2f2f2;">Hand-built phase moat</h3></div><div style="font: 500 21px/1.15 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">BER 0.3–0.6</div><p style="font-size: 14px; line-height: 1.55; color: #9a9a9a; text-wrap: pretty;">A π-checkerboard around each cell was meant to scatter gap light away. OFF cells ended brighter than ON cells, or every cell died.</p></div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;"><span class="badge b-fail">failed</span><h3 style="font: 600 16px/1.3 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #f2f2f2;">Gradient-designed phase mask</h3></div><div style="font: 500 21px/1.15 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">held 150 trips</div><p style="font-size: 14px; line-height: 1.55; color: #9a9a9a; text-wrap: pretty;">Designed through a differentiable replica (matches the simulator to 10⁻¹⁴), then re-run in the simulator. It learned a slowly lasing field timed to invade just after the 150-trip horizon.</p></div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;"><span class="badge b-measured">measured · 10⁵ trips</span><h3 style="font: 600 16px/1.3 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #f2f2f2;">Static absorbing amplitude mask</h3></div><div style="font: 500 21px/1.15 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">0 errors · 10⁵ trips</div><p style="font-size: 14px; line-height: 1.55; color: #9a9a9a; text-wrap: pretty;">Cells clear, 3 px gaps dark, saturable gain + absorber. Gaps cannot lase, so fronts cannot move; each cell settles into a stable fixed point (λ ≈ −10⁻³ per trip). Also 3/3 seeds at 1000:1 contrast and with gain noise up to 10⁻³.</p></div>
+  </div>
+  <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">Operating window · 3 px cells, 120 µm pitch, 3 seeds, 3000 trips</div><div style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px;"><div title="G0 2.2: all cells die" style="border: 1px solid #4a2222; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 2.2</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="#ff7a7a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">0/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">all cells die</div>
+  </div><div title="G0 2.4: all cells die" style="border: 1px solid #4a2222; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 2.4</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="#ff7a7a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">0/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">all cells die</div>
+  </div><div title="G0 2.6: all cells die" style="border: 1px solid #4a2222; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 2.6</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="#ff7a7a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">0/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">all cells die</div>
+  </div><div title="G0 2.8: 1 of 3 seeds holds" style="border: 1px solid #4d3f22; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 2.8</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v5M6 9.5v.5" stroke="#e6c07a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">1/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">1 of 3 seeds holds</div>
+  </div><div title="G0 3.0: 3 of 3" style="border: 1px solid #2a4a33; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 3.0</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#8fd6a4" stroke-width="1.6"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">3/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">3 of 3</div>
+  </div><div title="G0 3.2: 3 of 3" style="border: 1px solid #2a4a33; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 3.2</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#8fd6a4" stroke-width="1.6"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">3/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">3 of 3</div>
+  </div><div title="G0 3.4: 3 of 3 (1000:1)" style="border: 1px solid #2a4a33; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 3.4</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#8fd6a4" stroke-width="1.6"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">3/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">3 of 3 (1000:1)</div>
+  </div><div title="G0 4.0: 2 of 3" style="border: 1px solid #4d3f22; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 4.0</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v5M6 9.5v.5" stroke="#e6c07a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">2/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">2 of 3</div>
+  </div><div title="G0 5.0: every cell ON" style="border: 1px solid #4a2222; border-radius: 6px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; background: #0a0a0a;">
+    <div style="font: 500 14px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">G0 5.0</div>
+    <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="#ff7a7a" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="font: 12px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #f2f2f2;">0/3 seeds</span></div>
+    <div style="font-size: 11.5px; line-height: 1.3; color: #6a6a6a;">every cell ON</div>
+  </div></div><p style="font-size: 13px; color: #6a6a6a;">G0 3.0 was also run to 10⁵ trips (0 errors), at 1000:1 contrast and with gain noise 10⁻⁴ and 10⁻³ (0 errors to 10⁴). G0 3.4 is from the 1000:1 scan; 4.0–5.0 from the first coarse sweep; 3.6–3.8 not run. 2 px cells failed at every gain.</p></div>
+  <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">Gates and latch on the absorbing-mask architecture · re-run in the simulator to 10⁴ trips</div><table>
+      <tr><th>Circuit</th><th>cases correct at steady state</th><th>persistent</th><th>inputs kept</th><th>failure mode</th></tr>
+      <tr><td style="color: #f2f2f2;">AND</td><td class="num">4 / 4</td><td>yes · settles by trip 184</td><td>yes</td><td style="color: #9a9a9a;">—</td></tr><tr><td style="color: #f2f2f2;">OR</td><td class="num">1 / 4</td><td>—</td><td>yes</td><td style="color: #9a9a9a;">one input never switches the output</td></tr><tr><td style="color: #f2f2f2;">XOR (rail)</td><td class="num">2 / 4</td><td>—</td><td>yes</td><td style="color: #9a9a9a;">output stuck OFF</td></tr><tr><td style="color: #f2f2f2;">NAND (rail)</td><td class="num">3 / 4</td><td>—</td><td>no — rail light erased an input</td><td style="color: #9a9a9a;">output stuck ON</td></tr><tr><td style="color: #f2f2f2;">NOT (rail)</td><td class="num">1 / 2</td><td>—</td><td>yes</td><td style="color: #9a9a9a;">output stuck OFF</td></tr><tr><td style="color: #f2f2f2;">Set / reset latch</td><td class="num">hold 0 and 1; set slow</td><td>hold yes</td><td>yes</td><td style="color: #9a9a9a;">reset never clears Q</td></tr>
+    </table><p style="font-size: 14px; line-height: 1.55; color: #9a9a9a; text-wrap: pretty;">Every design latched its inputs — memory carries over. The output only responds through a bistable threshold: isolation strong enough to make a bit permanent means one ON source cannot switch a cell, and a rail strong enough to invert floods its neighbours. Only a coincidence function (AND) fits; AND alone is not functionally complete. Resetting a cell needs destructive interference with a phase the gain medium does not fix, or an inhibitory nonlinearity the element set lacks.</p></div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">Static linear wires · defocused self-imaging ring</div><table>
+      <tr><th>Distance</th><th>latency (trips)</th><th>efficiency</th><th>outcome</th></tr>
+      <tr><td style="color: #9a9a9a;">80 µm (4 px)</td><td class="num">4</td><td class="num">0.21</td><td>held to 550 trips</td></tr><tr><td style="color: #9a9a9a;">160 µm (8 px), 60-trip training</td><td class="num">20</td><td class="num">0.09</td><td>held to 70 trips</td></tr><tr><td style="color: #9a9a9a;">160 µm (8 px), 150-trip training</td><td class="num">19</td><td class="num">0.44</td><td>holds to 10⁴ (eigenmode sink)</td></tr><tr><td style="color: #9a9a9a;">320 µm (16 px)</td><td class="num">46</td><td class="num">0.16</td><td>held to 175 trips</td></tr><tr><td style="color: #9a9a9a;">480 µm (24 px)</td><td class="num">—</td><td class="num">—</td><td>held to 273 trips</td></tr><tr><td style="color: #9a9a9a;">160 µm with 2 spectator bits</td><td class="num">—</td><td class="num">—</td><td>2 of 6 cases hold to 10⁴</td></tr>
+    </table><p style="font-size: 13px; color: #6a6a6a;">Linear XOR: correct for 00, 01, 10 to 10⁴ trips; 11 fails at trip 130 when both inputs relax into the dominant mode.</p></div>
+    <div style="background: #0a0a0a; border: 1px solid #222222; border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; "><div style="font: 600 11px/1 'IBM Plex Mono', ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #9a9a9a; ">What a machine would need · gate-level netlists</div><table>
+      <tr><th>Circuit</th><th>2-input gates</th><th>depth</th></tr>
+      <tr><td style="color: #9a9a9a;">8-bit parity (checked on all 256 inputs)</td><td class="num">11 XOR</td><td class="num">3</td></tr><tr><td style="color: #9a9a9a;">Saturating controller step, 8-bit (all 65 536)</td><td class="num">66</td><td class="num">24</td></tr><tr><td style="color: #9a9a9a;">One subtraction-gcd iteration, 8-bit (6304 pairs)</td><td class="num">202</td><td class="num">31</td></tr><tr><td style="color: #9a9a9a;">Accumulator machine step, 4-bit (structural estimate)</td><td class="num">316 + ≈224 ROM</td><td class="num">20</td></tr>
+    </table><p style="font-size: 14px; line-height: 1.55; color: #9a9a9a; text-wrap: pretty;">Only AND has been shown persistent — not a complete gate set — and no register can be reset, so no instruction was executed: the stop condition. At ~3 cells of 0.0144 mm² per gate, one accumulator step (gates only, excluding ROM and routing) is ~14 mm² of flat, unvignetted field; this relay offers 0.16 mm². <span class="badge b-extrap">extrapolated</span></p></div>
+  </div>
+  <p style="font: 12px/1.5 'IBM Plex Mono', ui-monospace, Menlo, monospace; color: #6a6a6a;">Running: half/full adder, parity, saturating step, countdown and associative memory on the absorbing-mask architecture; absorbing-mask toggle and ring counter; a persistent wire and OR with a rail (the missing single-input coupling).</p>
+
+</div>
+</x-dc>
+</body>
+</html>

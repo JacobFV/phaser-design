@@ -1,0 +1,4 @@
+# Reservoir feature matrices (≈210 MB): intermediate, regenerated exactly by `2026-09-14/15-reservoir.ts`;
+# the readout results derived from them are kept in out/15/*.csv|json.
+2026-09-14/out/15/feat_*.f64
+__pycache__/

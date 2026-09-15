@@ -1,0 +1,124 @@
+{
+ "architectures": [
+  {
+   "arch": "A reflective SLM ring (self-imaging)",
+   "t_rt_ns": 0.6673175776646975,
+   "rt_rate_GHz": 1.4985368787969544,
+   "retention_per_trip": 0.6841154137881076,
+   "required_gain": 1.4617416591489516,
+   "modes_gt_1e2": 200,
+   "modes_gt_1e3": 173,
+   "modes_gt_1e5": 85,
+   "coupling_radius_t128_um": 106.4948184856034,
+   "coupling_rank_t128": "77/81",
+   "coupling_rank_t16384": "69/81",
+   "self_t128": 0.6612205578256566,
+   "max_states_per_mm2_life_ge_128": 277.8,
+   "pitch_um_life_ge_128": 60,
+   "max_states_per_mm2_life_ge_1024": 39.1,
+   "pitch_um_life_ge_1024": 160,
+   "max_lifetime_any_trips": 1024,
+   "best_dot_corr09_trips": 2371.0,
+   "best_dot_sigma_um": 56.99999999999999,
+   "MC_K10": 34.6,
+   "NARMA10_K10": 0.193,
+   "MC_K1": 30.4,
+   "NARMA10_K1": 0.208
+  },
+  {
+   "arch": "A reflective SLM ring (preset relay)",
+   "t_rt_ns": 0.6673175776646975,
+   "rt_rate_GHz": 1.4985368787969544,
+   "retention_per_trip": 0.6719529033812711,
+   "required_gain": 1.488199537449714,
+   "modes_gt_1e2": 111,
+   "modes_gt_1e3": 20,
+   "modes_gt_1e5": 1,
+   "best_dot_corr09_trips": 1.0,
+   "best_dot_sigma_um": 3.0,
+   "MC_K10": 34.6,
+   "NARMA10_K10": 0.193,
+   "MC_K1": 30.4,
+   "NARMA10_K1": 0.208
+  },
+  {
+   "arch": "B linear reciprocal LCD 4f",
+   "t_rt_ns": 2.6692703106587903,
+   "rt_rate_GHz": 0.37463421969923855,
+   "retention_per_trip": 0.6275906888560242,
+   "required_gain": 1.593395214041186,
+   "modes_gt_1e2": 344,
+   "modes_gt_1e3": 310,
+   "modes_gt_1e5": 155,
+   "coupling_radius_t128_um": 199.81456283994086,
+   "coupling_rank_t128": "64/64",
+   "coupling_rank_t16384": "36/64",
+   "self_t128": 0.6157849475724531,
+   "max_states_per_mm2_life_ge_128": 62.0,
+   "pitch_um_life_ge_128": 127,
+   "max_states_per_mm2_life_ge_1024": 0,
+   "max_lifetime_any_trips": 512,
+   "best_dot_corr09_trips": 1334.0,
+   "best_dot_sigma_um": 64.0,
+   "MC_K10": 15.9,
+   "NARMA10_K10": 0.372,
+   "MC_K1": 17.6,
+   "NARMA10_K1": 0.301
+  },
+  {
+   "arch": "B lensless (shipped preset style)",
+   "t_rt_ns": 2.6692703106587903,
+   "rt_rate_GHz": 0.37463421969923855,
+   "retention_per_trip": 0.6185921506813153,
+   "required_gain": 1.6165740203761125,
+   "modes_gt_1e2": 29,
+   "modes_gt_1e3": 1,
+   "modes_gt_1e5": 1
+  },
+  {
+   "arch": "C cheap LCD + MLA",
+   "t_rt_ns": 0.2726693434470102,
+   "rt_rate_GHz": 3.667445659120594,
+   "retention_per_trip": 0.5972361237800897,
+   "required_gain": 1.6743796300710927,
+   "modes_gt_1e2": 29,
+   "modes_gt_1e3": 5,
+   "modes_gt_1e5": 1,
+   "coupling_radius_t128_um": 777.4974160258902,
+   "coupling_rank_t128": "49/49",
+   "coupling_rank_t16384": "3/49",
+   "self_t128": 0.00783952425631854,
+   "max_states_per_mm2_life_ge_128": 0,
+   "max_states_per_mm2_life_ge_1024": 0,
+   "max_lifetime_any_trips": 32,
+   "best_dot_corr09_trips": 24.0,
+   "best_dot_sigma_um": 32.0,
+   "MC_K10": 2.8,
+   "NARMA10_K10": 0.866,
+   "MC_K1": 5.4,
+   "NARMA10_K1": 0.949
+  }
+ ],
+ "logic": {
+  "gate_lin_XOR_sd5": {
+   "cases": 4,
+   "cases_correct_to_1e4": 3
+  },
+  "mem16_lowthr": {
+   "cases": 8,
+   "cases_correct_to_1e4": 0
+  },
+  "wire_lin_d4_sd5": {
+   "cases": 2,
+   "cases_correct_to_1e4": 1
+  },
+  "wire_lin_d8_sd5": {
+   "cases": 2,
+   "cases_correct_to_1e4": 1
+  },
+  "wire_lin_d8_sd5_T150": {
+   "cases": 2,
+   "cases_correct_to_1e4": 2
+  }
+ }
+}

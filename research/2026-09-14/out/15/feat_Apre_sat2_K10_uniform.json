@@ -1,0 +1,10 @@
+{
+ "opName": "Apre_sat2",
+ "K": 10,
+ "steps": 3200,
+ "tag": "uniform",
+ "note": "local gain + absorber, near threshold",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 68.425166166,
+ "maxI": 9.344795415132193
+}

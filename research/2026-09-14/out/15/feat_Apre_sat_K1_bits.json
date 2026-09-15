@@ -1,0 +1,10 @@
+{
+ "opName": "Apre_sat",
+ "K": 1,
+ "steps": 3200,
+ "tag": "bits",
+ "note": "local gain + weak absorber, below lasing",
+ "t_rt": 6.673175776646975e-10,
+ "secs": 12.202790250000001,
+ "maxI": 8.350665295112577
+}

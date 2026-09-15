@@ -1,0 +1,18 @@
+Aimg_lin_K10 MC=4.69 maxdelay(r2>.5)=0 NARMA10 NMSE=1.343 xor_d0=0.937 xor_d2=0.923 par3_d0=0.740 rank99=213
+Aimg_lin_K1 MC=1.97 maxdelay(r2>.5)=0 NARMA10 NMSE=1.473 xor_d0=0.892 xor_d2=0.739 par3_d0=0.563 rank99=131
+Aimg_sat_K10 MC=4.87 maxdelay(r2>.5)=4 NARMA10 NMSE=0.764 xor_d0=1.000 xor_d2=1.000 par3_d0=1.000 rank99=6
+Aimg_sat_K1 MC=2.58 maxdelay(r2>.5)=0 NARMA10 NMSE=1.305 xor_d0=0.842 xor_d2=0.682 par3_d0=0.552 rank99=64
+Apre_kerr_K10 MC=5.23 maxdelay(r2>.5)=5 NARMA10 NMSE=0.597 xor_d0=1.000 xor_d2=1.000 par3_d0=1.000 rank99=51
+Apre_kerr_K1 MC=14.14 maxdelay(r2>.5)=12 NARMA10 NMSE=0.469 xor_d0=0.959 xor_d2=0.776 par3_d0=0.620 rank99=205
+Apre_lin_K10 MC=34.64 maxdelay(r2>.5)=37 NARMA10 NMSE=0.193 xor_d0=0.999 xor_d2=0.983 par3_d0=0.838 rank99=183
+Apre_lin_K1 MC=30.41 maxdelay(r2>.5)=31 NARMA10 NMSE=0.208 xor_d0=1.000 xor_d2=0.917 par3_d0=0.763 rank99=158
+Apre_sat2_K10 MC=0.37 maxdelay(r2>.5)=0 NARMA10 NMSE=0.991 xor_d0=0.546 xor_d2=0.511 par3_d0=0.516 rank99=231
+Apre_sat2_K1 MC=3.41 maxdelay(r2>.5)=0 NARMA10 NMSE=0.837 xor_d0=0.784 xor_d2=0.545 par3_d0=0.502 rank99=230
+Apre_sat_K10 MC=10.76 maxdelay(r2>.5)=11 NARMA10 NMSE=0.271 xor_d0=1.000 xor_d2=1.000 par3_d0=1.000 rank99=11
+Apre_sat_K1 MC=31.18 maxdelay(r2>.5)=31 NARMA10 NMSE=0.199 xor_d0=1.000 xor_d2=0.914 par3_d0=0.740 rank99=136
+B_sat_K10 MC=15.89 maxdelay(r2>.5)=16 NARMA10 NMSE=0.372 xor_d0=1.000 xor_d2=0.994 par3_d0=1.000 rank99=53
+B_sat_K1 MC=17.64 maxdelay(r2>.5)=1 NARMA10 NMSE=0.301 xor_d0=0.882 xor_d2=0.701 par3_d0=0.685 rank99=86
+C_sat_K10 MC=2.80 maxdelay(r2>.5)=1 NARMA10 NMSE=0.866 xor_d0=0.807 xor_d2=0.597 par3_d0=0.545 rank99=129
+C_sat_K1 MC=5.36 maxdelay(r2>.5)=2 NARMA10 NMSE=0.949 xor_d0=0.832 xor_d2=0.708 par3_d0=0.540 rank99=176
+tapped_delay_8 MC=7.04 NARMA10=0.640 xor_d0=0.508
+esn256 MC=7.11 NARMA10=0.663 xor_d0=1.000

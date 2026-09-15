@@ -1,0 +1,18 @@
+{
+ "q": 5,
+ "p": 2,
+ "hardware": "A_preset optics + static SLM lens",
+ "slmPower_D": 6.598300562505267,
+ "trace_without_slm": -1.75,
+ "horizon": 20000,
+ "noiseRel": 0.0001,
+ "nonlinear": false,
+ "t_rt": 6.673175776646977e-10,
+ "trips_per_tick": 1,
+ "ticks_per_cycle": 5,
+ "clock_frequency_Hz": 1498536878.796954,
+ "first_sequence_error": 3162,
+ "decoded_fraction_ok": 0.9567723342939481,
+ "min_contrast": 1.0213291661037076,
+ "late_mean_best_overlap": 0.1332104646679967
+}
